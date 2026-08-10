@@ -94,7 +94,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     Thank you for requesting early access to <strong>Dori</strong> — your token-conscious, local-first AI executive assistant.
   </p>
   <p style="color:#475569;font-size:15px;line-height:1.6;margin-bottom:24px">
-    We're onboarding founding members in batches to ensure every executive vault experience is seamless. We'll send your invite as soon as a slot opens up.
+    We're onboarding early access members in batches to ensure every executive vault experience is seamless. We'll send your invite as soon as a slot opens up.
   </p>
   <div style="background:#f1f5f9;padding:16px;border-radius:8px;margin-bottom:24px;">
     <p style="margin:0;font-size:13px;color:#334155;">
