@@ -8,5 +8,5 @@ name = "dori-website"
 pages_build_output_dir = "."
 
 [vars]
-RESEND_FROM_EMAIL = "noreply@mydori.app"
+RESEND_FROM_EMAIL = "noreply@updates.mydori.app"
 ADMIN_NOTIFY_EMAIL = "shrinath@thesalientadvisory.com"
