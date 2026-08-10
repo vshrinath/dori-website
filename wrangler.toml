@@ -4,7 +4,7 @@
 #
 # RESEND_API_KEY is a secret managed via the Cloudflare dashboard (not listed here).
 
-name = "nuul-website"
+name = "dori-website"
 pages_build_output_dir = "."
 
 [vars]
