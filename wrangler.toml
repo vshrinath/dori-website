@@ -1,0 +1,12 @@
+# Cloudflare Pages project configuration.
+# This file exists to resolve Cloudflare's "Wrangler-managed" mode — without it,
+# the runtime does not receive dashboard-configured secrets even when they are set correctly.
+#
+# RESEND_API_KEY is a secret managed via the Cloudflare dashboard (not listed here).
+
+name = "nuul-website"
+pages_build_output_dir = "."
+
+[vars]
+RESEND_FROM_EMAIL = "noreply@mydori.app"
+ADMIN_NOTIFY_EMAIL = "shrinath@thesalientadvisory.com"
