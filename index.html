@@ -559,6 +559,49 @@
     .reveal.delay-1 { transition-delay: 0.08s; }
     .reveal.delay-2 { transition-delay: 0.16s; }
     .reveal.delay-3 { transition-delay: 0.24s; }
+
+    /* ─── Waitlist Modal ─── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10, 15, 30, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-backdrop.open { opacity: 1; visibility: visible; }
+    .modal-card {
+      position: relative; width: 100%; max-width: 440px;
+      background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 1.25rem; padding: 2rem 2.25rem; color: #f8fafc;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(245, 158, 11, 0.12);
+      transform: scale(0.92) translateY(10px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-backdrop.open .modal-card { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: rgba(255,255,255,0.08); border: none; color: #94a3b8;
+      width: 32px; height: 32px; border-radius: 50%; font-size: 1.25rem;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background 0.2s, color 0.2s; line-height: 1;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.16); color: #fff; }
+    .modal-badge { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; font-size: 0.75rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.75rem; }
+    .modal-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .modal-desc { font-size: 0.875rem; color: #94a3b8; line-height: 1.5; margin-bottom: 1.5rem; }
+    .modal-form { display: flex; flex-direction: column; gap: 0.875rem; }
+    .modal-input-wrap input {
+      width: 100%; padding: 0.875rem 1.125rem; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.75rem;
+      font-size: 0.95rem; color: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .modal-input-wrap input:focus { border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2); }
+    .modal-btn { width: 100%; justify-content: center; padding: 0.875rem; font-size: 0.95rem; font-weight: 700; border-radius: 0.75rem; }
+    .modal-error { font-size: 0.8rem; color: #ef4444; margin-top: 0.25rem; display: none; }
+    .modal-success { text-align: center; padding: 1rem 0; }
+    .success-icon { width: 48px; height: 48px; background: rgba(16, 185, 129, 0.2); color: #34d399; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .modal-success h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+    .modal-success p { font-size: 0.875rem; color: #94a3b8; }
+    .modal-footer-note { font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 1.25rem; }
   </style>
 </head>
 <body>
@@ -1267,6 +1310,104 @@
       featScroll.scrollLeft = scrollLeft - (x - startX) * 1.2;
     });
   }
+
+  // Early Access Waitlist Modal logic
+  const modalBackdrop = document.getElementById('waitlist-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const waitlistForm = document.getElementById('waitlist-form');
+  const waitlistEmail = document.getElementById('waitlist-email');
+  const waitlistSubmitBtn = document.getElementById('waitlist-submit-btn');
+  const waitlistError = document.getElementById('waitlist-error');
+  const waitlistSuccess = document.getElementById('waitlist-success');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    if (modalBackdrop) modalBackdrop.classList.add('open');
+    if (waitlistEmail) setTimeout(() => waitlistEmail.focus(), 150);
+  }
+
+  function closeModal() {
+    if (modalBackdrop) modalBackdrop.classList.remove('open');
+  }
+
+  // Wire all "Get Early Access" buttons to open the modal
+  document.querySelectorAll('a[href="#pricing"], .price-cta, a.btn-amber').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+  }
+
+  // Handle Form Submit
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = waitlistEmail ? waitlistEmail.value.trim() : '';
+      if (!email) return;
+
+      waitlistError.style.display = 'none';
+      waitlistSubmitBtn.disabled = true;
+      waitlistSubmitBtn.querySelector('span').textContent = 'Submitting...';
+
+      try {
+        // Send request to dori portal waitlist endpoint
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          waitlistForm.style.display = 'none';
+          waitlistSuccess.style.display = 'block';
+        } else {
+          waitlistError.textContent = data.error || 'Failed to submit. Please try again.';
+          waitlistError.style.display = 'block';
+          waitlistSubmitBtn.disabled = false;
+          waitlistSubmitBtn.querySelector('span').textContent = 'Join Waitlist →';
+        }
+      } catch (err) {
+        console.error('Waitlist submission error:', err);
+        waitlistError.textContent = 'Network error. Please try again.';
+        waitlistError.style.display = 'block';
+        waitlistSubmitBtn.disabled = false;
+        waitlistSubmitBtn.querySelector('span').textContent = 'Join Waitlist →';
+      }
+    });
+  }
 </script>
+
+<!-- EARLY ACCESS WAITLIST MODAL -->
+<div id="waitlist-modal" class="modal-backdrop">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
+    <div class="modal-badge">✨ Founding Executive Access</div>
+    <h2 class="modal-title">Get early access to Dori</h2>
+    <p class="modal-desc">Join founding executives testing local-first, token-conscious AI intelligence. Enter your email for priority invite access.</p>
+
+    <form id="waitlist-form" class="modal-form">
+      <div class="modal-input-wrap">
+        <input type="email" id="waitlist-email" placeholder="name@company.com" required autocomplete="email" />
+      </div>
+      <button type="submit" id="waitlist-submit-btn" class="btn btn-amber modal-btn">
+        <span>Join Waitlist →</span>
+      </button>
+      <div id="waitlist-error" class="modal-error"></div>
+    </form>
+
+    <div id="waitlist-success" class="modal-success" style="display:none;">
+      <div class="success-icon">✓</div>
+      <h3>You're on the list!</h3>
+      <p>We've reserved your spot and sent a welcome email to your inbox.</p>
+    </div>
+
+    <p class="modal-footer-note">🔒 Zero spam. We respect your privacy.</p>
+  </div>
+</div>
 </body>
 </html>
