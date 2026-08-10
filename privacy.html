@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Dori</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2, h3 { color: #111; }
+        h2 { margin-top: 2em; }
+        h3 { margin-top: 1.4em; font-size: 1.05em; }
+        a { color: #0066cc; }
+        .container { background: #fff; padding: 20px; border-radius: 8px; }
+        .footnav { margin-top: 2em; padding-top: 1em; border-top: 1px solid #eee; font-size: 0.9em; }
+        ul { padding-left: 1.3em; }
+        li { margin-bottom: 0.6em; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #111; color: #ddd; }
+            h1, h2, h3 { color: #fff; }
+            a { color: #4da6ff; }
+            .container { background: #1a1a1a; }
+            .footnav { border-top-color: #333; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last Updated:</strong> August 10, 2026</p>
+
+        <p>Dori is operated, at this stage, by an individual founder prior to formal incorporation of a company entity. In this Policy, "we" and "us" refer to that individual, doing business as Dori.</p>
+
+        <h2>Local-First Architecture</h2>
+        <p>Dori is fundamentally a local-first application. Your notes, captures, meeting summaries, and metadata are stored directly on your own device (or your own self-hosted server, if you choose that option) as plain Markdown files. We do not operate central servers that store your vault content, and we cannot read it unless you explicitly share it with us (for example, to get support).</p>
+
+        <h2>What We Collect</h2>
+
+        <h3>Waitlist and early access</h3>
+        <p>When you join the Dori waitlist at mydori.app, we collect the email address (and name, if you provide one) you submit. This is stored as a contact in Resend, our email service provider, and used to send you early-access updates and to notify us internally that someone signed up. We do not sell this information. You can ask us to remove you at any time (see Contact, below), or unsubscribe from any email we send.</p>
+
+        <h3>The desktop app</h3>
+        <p>Dori does not currently collect telemetry or automated crash reports from the desktop app. If you run into an issue, you may choose to manually share your local log files with us for debugging — we never collect them automatically.</p>
+
+        <h3>Signed-in portal usage</h3>
+        <p>If you use Dori's web portal, we set an essential session cookie required to keep you signed in. We do not use advertising or cross-site tracking cookies, and we do not run third-party analytics scripts (e.g. Google Analytics, Meta Pixel) on our website or portal.</p>
+
+        <h2>How Your Data Flows Through Integrations You Connect</h2>
+        <p>Every integration below is opt-in — Dori only talks to a service if you explicitly connect it. Once connected, your interaction with that service is also governed by its own privacy policy, which we encourage you to read.</p>
+
+        <ul>
+            <li><strong>AI providers</strong> (Anthropic, OpenAI, Groq, OpenRouter, or CLI-based subscriptions like Claude Code, Codex, Antigravity, or Grok): your API key or session credential is stored locally in your device's keychain. When you use an AI feature, the relevant vault content is sent directly from your device to that provider — it does not pass through our servers.</li>
+            <li><strong>WhatsApp:</strong> Dori connects to WhatsApp using an independent, open-source library that replicates the WhatsApp Web protocol (it is not WhatsApp's official Business API, and is not affiliated with WhatsApp Inc. or Meta). Your WhatsApp session credentials are stored locally on your device, the same way they would be for WhatsApp Web. Messages you send Dori are processed locally and, where you've enabled AI features, sent to your configured AI provider as described above.</li>
+            <li><strong>Google Drive:</strong> import uses Google's narrow <code>drive.file</code> OAuth scope — Dori can only access files you explicitly select through Google's file picker, never a broad scan of your Drive.</li>
+            <li><strong>Google Meet / Calendar:</strong> with your consent, Dori reads calendar events and the meeting recordings/transcripts Meet saves to your Drive, to build meeting notes.</li>
+            <li><strong>Microsoft Copilot (Teams):</strong> with your consent, Dori reads Teams meeting transcripts via the Microsoft Graph API.</li>
+            <li><strong>GitHub (Vault Sync):</strong> if you enable this, Dori syncs your vault to a private GitHub repository you own. Our authentication broker only facilitates the initial OAuth handshake to generate a secure token — your Dori app then talks to GitHub directly, and we do not intercept, read, or store your repository content.</li>
+            <li><strong>Fathom:</strong> if you connect Fathom for meeting recording, your recordings are handled by Fathom under its own privacy policy. Dori retrieves only the transcripts and summaries you authorize.</li>
+            <li><strong>Tailscale:</strong> if you use Tailscale for secure remote access, traffic between your devices runs over Tailscale's own encrypted mesh network directly — we do not operate or have visibility into that traffic.</li>
+            <li><strong>MCP (Model Context Protocol) servers:</strong> any MCP server you connect (e.g. Firecrawl, Gmail, Calendar) operates under an explicit, per-tool allowlist you configure yourself. Dori does not send data to an MCP tool you haven't approved.</li>
+        </ul>
+
+        <h2>Self-Hosted and VPS Deployments</h2>
+        <p>If you run Dori's engine on your own server or VPS instead of locally, your vault and configuration live entirely on infrastructure you control. We have no access to it.</p>
+
+        <h2>What We Don't Do</h2>
+        <ul>
+            <li>We don't sell your personal data.</li>
+            <li>We don't run advertising trackers or third-party analytics on our website or portal.</li>
+            <li>We don't collect telemetry or automatic crash reports from the desktop app at this time.</li>
+        </ul>
+
+        <h2>Data Retention and Deletion</h2>
+        <p>Waitlist contact information is retained until you unsubscribe or ask us to delete it. Your local vault data is retained entirely under your own control, since it's plain files on your device or your own infrastructure — deleting the files deletes the data.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>Dori is a productivity tool intended for professional use and is not directed at, or knowingly used to collect information from, children under 18.</p>
+
+        <h2>International Users</h2>
+        <p>Because Dori is local-first, most of your data never leaves your own device. Where you connect a third-party integration or AI provider, your data may be transferred to and processed by that provider under its own privacy policy and in whatever jurisdiction it operates.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>If we introduce telemetry, cloud-based features, or new data collection in the future, we will update this Policy and notify users of material changes. Continued use of Dori after such an update constitutes acceptance of the revised Policy.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about this Privacy Policy, or requests to access or delete data we hold about you, can be sent to <a href="mailto:hello@updates.mydori.app">hello@updates.mydori.app</a>.</p>
+
+        <div class="footnav">
+            <a href="/terms.html">Terms of Service</a> · <a href="https://mydori.app">mydori.app</a>
+        </div>
+    </div>
+</body>
+</html>
