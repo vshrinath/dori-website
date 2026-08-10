@@ -1,5 +1,6 @@
 interface Env {
   RESEND_API_KEY: string;
+  RESEND_SEGMENT_ID?: string;
   RESEND_AUDIENCE_ID?: string;
   ADMIN_NOTIFY_EMAIL?: string;
   RESEND_FROM_EMAIL?: string;
@@ -29,32 +30,45 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const apiKey = env.RESEND_API_KEY;
     if (!apiKey) {
+      console.error('[waitlist] RESEND_API_KEY environment variable is missing.');
       return new Response(
-        JSON.stringify({ error: 'Resend API key configuration missing.' }),
+        JSON.stringify({ error: 'Server configuration error: RESEND_API_KEY is missing.' }),
         { status: 500, headers: CORS_HEADERS }
       );
     }
 
-    const fromEmail = env.RESEND_FROM_EMAIL || 'noreply@mydori.app';
+    // 1. Create Contact in Resend (Strict transaction boundary)
+    const segmentId = env.RESEND_SEGMENT_ID || env.RESEND_AUDIENCE_ID;
+    const contactPayload: Record<string, any> = {
+      email,
+      unsubscribed: false,
+    };
+    if (name) contactPayload.first_name = name;
+    if (segmentId) contactPayload.segment_id = segmentId;
 
-    // 1. Add contact to Resend Audience if AUDIENCE_ID is configured
-    if (env.RESEND_AUDIENCE_ID) {
-      await fetch(`https://api.resend.com/audiences/${env.RESEND_AUDIENCE_ID}/contacts`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          first_name: name || undefined,
-          unsubscribed: false,
-        }),
-      }).catch((err) => console.warn('Resend contact add warning:', err));
+    const contactRes = await fetch('https://api.resend.com/contacts', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contactPayload),
+    });
+
+    if (!contactRes.ok) {
+      const errorText = await contactRes.text();
+      console.error(`[waitlist] Resend contact creation failed [${contactRes.status}]:`, errorText);
+      return new Response(
+        JSON.stringify({ error: 'Unable to register email on waitlist. Please verify your email or try again later.' }),
+        { status: contactRes.status >= 400 && contactRes.status < 500 ? 400 : 500, headers: CORS_HEADERS }
+      );
     }
 
-    // 2. Send welcome email to subscriber
-    await fetch('https://api.resend.com/emails', {
+    // 2. Best-effort side-effects: Welcome Email & Admin Notification
+    const fromEmail = env.RESEND_FROM_EMAIL || 'noreply@mydori.app';
+
+    // Welcome Email (non-critical)
+    fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -86,12 +100,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 </body>
 </html>`,
       }),
-    }).catch((err) => console.warn('Welcome email warning:', err));
+    }).catch((err) => console.warn('[waitlist] welcome email error (non-critical):', err));
 
-    // 3. Notify Admin if configured
+    // Admin Notification Email (non-critical)
     const adminEmail = env.ADMIN_NOTIFY_EMAIL || env.RESEND_FROM_EMAIL;
     if (adminEmail) {
-      await fetch('https://api.resend.com/emails', {
+      fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -103,15 +117,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           subject: `🚀 New Early Access Signup: ${email}`,
           html: `<p>New early access waitlist signup from <strong>${email}</strong> via mydori.app homepage.</p>`,
         }),
-      }).catch((err) => console.warn('Admin notify warning:', err));
+      }).catch((err) => console.warn('[waitlist] admin notify error (non-critical):', err));
     }
 
+    // 3. Return success response (Contact is safely created)
     return new Response(
       JSON.stringify({ success: true, message: "You've been added to the early access list!" }),
       { status: 200, headers: CORS_HEADERS }
     );
   } catch (err: any) {
-    console.error('Waitlist Function Error:', err);
+    console.error('[waitlist] Waitlist Function Error:', err);
     return new Response(
       JSON.stringify({ error: 'Failed to process waitlist signup. Please try again.' }),
       { status: 500, headers: CORS_HEADERS }

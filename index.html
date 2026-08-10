@@ -613,10 +613,10 @@
     <ul class="nav-links">
       <li><a href="#capture">How it works</a></li>
       <li><a href="#personas">Who it's for</a></li>
-      <li><a href="#pricing">Early access</a></li>
+      <li><a href="#waitlist" data-waitlist-trigger="true">Early access</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.75rem;">
-      <a href="#pricing" class="btn btn-amber">Get early access</a>
+      <a href="#waitlist" class="btn btn-amber" data-waitlist-trigger="true">Get early access</a>
       <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -640,7 +640,7 @@
         You're not lazy. You're juggling too much. Dori handles the boring parts so you can be the calmer version of yourself.
       </p>
       <div class="hero-ctas">
-        <a href="#pricing" class="btn btn-amber btn-lg">Get early access →</a>
+        <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
         <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
       <p class="hero-note">Works with any AI model you already use. Your data stays yours.</p>
@@ -1167,7 +1167,7 @@
         <li><span class="pi">✓</span> Meeting notes, people layer, studio</li>
         <li><span class="pi">✓</span> Memory that's yours, not a vendor's</li>
       </ul>
-      <a href="#" class="price-cta price-cta-amber" style="font-size:1rem;padding:0.875rem;">Get early access →</a>
+      <a href="#waitlist" class="price-cta price-cta-amber" data-waitlist-trigger="true" style="font-size:1rem;padding:0.875rem;">Get early access →</a>
     </div>
   </div>
 </section>
@@ -1215,7 +1215,7 @@
     <h2 class="t-h1" style="margin-top:.75rem;">Be the calmer version<br>of <em>yourself.</em></h2>
     <p class="sub" style="margin-top:1rem;">Dori holds the context, tracks the threads, and makes sure nothing slips. Give it a week — and the day will feel different.</p>
     <div class="ctaband-btns">
-      <a href="#pricing" class="btn btn-amber btn-lg">Get early access →</a>
+      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
       <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
     </div>
   </div>
@@ -1331,9 +1331,14 @@
   }
 
   // Wire all "Get Early Access" buttons to open the modal
-  document.querySelectorAll('a[href="#pricing"], .price-cta, a.btn-amber').forEach(btn => {
-    btn.addEventListener('click', openModal);
-  });
+  document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-waitlist-trigger], a[href="#pricing"], a[href="#waitlist"], .price-cta, a.btn-amber');
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+    }
+  }, true);
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
   if (modalBackdrop) {
