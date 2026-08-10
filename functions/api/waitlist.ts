@@ -64,21 +64,28 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
-    // 2. Best-effort side-effects: Welcome Email & Admin Notification
+    // 2. Best-effort side-effects: Welcome Email & Admin Notification.
+    // These are fired without blocking the response, but MUST be registered
+    // via context.waitUntil() — otherwise the Workers runtime is free to tear
+    // down this request's execution context the instant the Response below
+    // is returned, silently cancelling any fetch() still in flight. Without
+    // waitUntil, these sends only "usually" complete, which is why they can
+    // appear to work in testing but silently stop firing in production.
     const fromEmail = env.RESEND_FROM_EMAIL || 'noreply@mydori.app';
 
     // Welcome Email (non-critical)
-    fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: email,
-        subject: "You're on the Dori Early Access list 🎉",
-        html: `<!DOCTYPE html>
+    context.waitUntil(
+      fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: email,
+          subject: "You're on the Dori Early Access list 🎉",
+          html: `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" /></head>
 <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:520px;margin:40px auto;padding:24px;color:#1e293b;background-color:#fafafa;border-radius:12px;border:1px solid #e2e8f0;">
@@ -99,25 +106,40 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   </p>
 </body>
 </html>`,
-      }),
-    }).catch((err) => console.warn('[waitlist] welcome email error (non-critical):', err));
+        }),
+      })
+        .then(async (res) => {
+          if (!res.ok) {
+            console.warn('[waitlist] welcome email non-2xx:', res.status, await res.text());
+          }
+        })
+        .catch((err) => console.warn('[waitlist] welcome email error (non-critical):', err))
+    );
 
     // Admin Notification Email (non-critical)
     const adminEmail = env.ADMIN_NOTIFY_EMAIL || env.RESEND_FROM_EMAIL;
     if (adminEmail) {
-      fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: fromEmail,
-          to: adminEmail,
-          subject: `🚀 New Early Access Signup: ${email}`,
-          html: `<p>New early access waitlist signup from <strong>${email}</strong> via mydori.app homepage.</p>`,
-        }),
-      }).catch((err) => console.warn('[waitlist] admin notify error (non-critical):', err));
+      context.waitUntil(
+        fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: fromEmail,
+            to: adminEmail,
+            subject: `🚀 New Early Access Signup: ${email}`,
+            html: `<p>New early access waitlist signup from <strong>${email}</strong> via mydori.app homepage.</p>`,
+          }),
+        })
+          .then(async (res) => {
+            if (!res.ok) {
+              console.warn('[waitlist] admin notify non-2xx:', res.status, await res.text());
+            }
+          })
+          .catch((err) => console.warn('[waitlist] admin notify error (non-critical):', err))
+      );
     }
 
     // 3. Return success response (Contact is safely created)
