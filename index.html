@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dori — Your AI Executive Assistant</title>
-  <meta name="description" content="The executive assistant you always wanted. Share on WhatsApp, drop a voice note, forward a file — Dori organises everything, remembers everything, and is ready the moment you need it." />
+  <title>Dori — The AI Executive Assistant That Never Forgets</title>
+  <meta name="description" content="For founders, consultants, and business leaders. Voice notes, WhatsApp messages, meetings, files — Dori remembers all of it, connects it to the right client, and has it ready the moment you ask. Your data stays in plain files you own." />
   <link rel="icon" type="image/png" href="logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nuul.live" />
-  <meta property="og:title" content="Dori — Your AI Executive Assistant" />
-  <meta property="og:description" content="The executive assistant you always wanted. Share on WhatsApp, drop a voice note, forward a file — Dori organises everything, remembers everything, and is ready the moment you need it." />
+  <meta property="og:title" content="Dori — The AI Executive Assistant That Never Forgets" />
+  <meta property="og:description" content="Voice notes, WhatsApp messages, meetings, files — Dori remembers all of it, connects it to the right client, and has it ready the moment you ask." />
   <meta property="og:image" content="https://nuul.live/logo.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Dori — Your AI Executive Assistant" />
-  <meta name="twitter:description" content="The executive assistant you always wanted. Share on WhatsApp, drop a voice note, forward a file — Dori organises everything, remembers everything, and is ready the moment you need it." />
+  <meta name="twitter:title" content="Dori — The AI Executive Assistant That Never Forgets" />
+  <meta name="twitter:description" content="Voice notes, WhatsApp messages, meetings, files — Dori remembers all of it, connects it to the right client, and has it ready the moment you ask." />
   <meta name="twitter:image" content="https://nuul.live/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── Reset & Base ─── */
@@ -22,61 +26,90 @@
 
     :root {
       --amber:   #f0a80e;
+      --amber-soft: #ffd978;
       --navy:    #1a1f4e;
-      --navy-mid:#243070;
-      --canvas:  #fffef5;
-      --canvas2: #f5f4e8;
+      --navy-deep:#131737;
+      --canvas:  #fcfbf7;
+      --canvas2: #f3f1ea;
       --ink:     #0e1626;
       --muted:   #8892a4;
-      --border:  rgba(255,255,255,0.10);
-      --border-d:rgba(26,31,78,0.12);
-      --r-sm: 8px;
-      --r-md: 14px;
-      --r-lg: 24px;
+      --body:    #4a5568;
+      --blue:    #7c9ef0;
+      --green:   #5ad18a;
+      --purple:  #b07cf0;
+      --coral:   #f0785a;
+      --r-md: 16px;
+      --r-lg: 28px;
+      --font-display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-family: var(--font-body);
       background: var(--canvas);
       color: var(--ink);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; height: auto; display: block; }
+
+    ::selection { background: var(--amber); color: var(--navy); }
 
     /* ─── Typography ─── */
-    .t-display { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.03em; }
-    .t-h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 750; line-height: 1.1; letter-spacing: -0.025em; }
-    .t-h2 { font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
-    .t-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+    h1, h2, h3, .display { font-family: var(--font-display); }
+    .t-display { font-size: clamp(2.9rem, 7.2vw, 6rem); font-weight: 780; line-height: 0.98; letter-spacing: -0.03em; }
+    .t-h1 { font-size: clamp(2.1rem, 4.8vw, 3.8rem); font-weight: 740; line-height: 1.04; letter-spacing: -0.025em; }
+    .t-h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+    .serif-pop { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: 0; }
+
+    /* Sticker labels */
+    .sticker {
+      display: inline-block; padding: 0.35rem 0.95rem;
+      border-radius: 100px; font-family: var(--font-display);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      transform: rotate(-2deg);
+      border: 2px solid currentColor;
+    }
+    .sticker.amber { color: #b57d00; background: rgba(240,168,14,0.14); }
+    .sticker.blue  { color: #4a6dd8; background: rgba(124,158,240,0.14); }
+    .sticker.green { color: #2a9c5c; background: rgba(90,209,138,0.14); }
+    .sticker.purple{ color: #8a54cc; background: rgba(176,124,240,0.14); }
+    .sticker.coral { color: #d05436; background: rgba(240,120,90,0.14); }
+    .sticker.on-navy { color: var(--amber-soft); background: rgba(240,168,14,0.12); }
+
+    /* Squiggle underline */
+    .squig { position: relative; white-space: nowrap; }
+    .squig svg { position: absolute; left: 0; right: 0; bottom: -0.18em; width: 100%; height: 0.32em; overflow: visible; }
+    .squig svg path { fill: none; stroke: var(--amber); stroke-width: 5; stroke-linecap: round; }
 
     /* ─── Layout ─── */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    section { padding: clamp(4rem, 8vw, 7rem) 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
 
     /* ─── Nav ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       backdrop-filter: blur(16px) saturate(1.4);
-      background: rgba(26,31,78,0.92);
-      border-bottom: 1px solid var(--border);
+      background: rgba(26,31,78,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 60px; max-width: 1280px; margin: 0 auto;
+      height: 62px; max-width: 1200px; margin: 0 auto;
       padding: 0 clamp(1.25rem, 4vw, 3rem);
     }
-    .wordmark { font-size: 1.3rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; text-decoration: none; }
+    .wordmark { font-family: var(--font-display); font-size: 1.45rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; text-decoration: none; }
     .wordmark span { color: var(--amber); }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: #fff; }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.2s; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
     @media (max-width: 640px) {
       .nav-hamburger { display: flex; }
       .nav-links {
-        display: none; position: fixed; top: 60px; left: 0; right: 0;
+        display: none; position: fixed; top: 62px; left: 0; right: 0;
         background: var(--navy); flex-direction: column;
         padding: 1.25rem clamp(1.25rem, 4vw, 3rem); gap: 1.25rem;
         border-top: 1px solid rgba(255,255,255,0.08); z-index: 99;
@@ -86,409 +119,366 @@
     }
 
     /* ─── Buttons ─── */
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; border-radius: var(--r-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
-    .btn-amber { background: var(--amber); color: var(--navy); }
-    .btn-amber:hover { background: #f8b820; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(240,168,14,0.4); }
-    .btn-ghost { background: transparent; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); }
-    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
-    .btn-outline-dark { background: transparent; color: var(--navy); border: 1.5px solid rgba(26,31,78,0.2); }
-    .btn-outline-dark:hover { border-color: var(--navy); background: rgba(26,31,78,0.05); }
-    .btn-lg { padding: 0.875rem 2rem; font-size: 1rem; border-radius: var(--r-md); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 100px;
+      font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; border: none;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s;
+    }
+    .btn-amber { background: var(--amber); color: var(--navy); box-shadow: 0 2px 0 rgba(0,0,0,0.18); }
+    .btn-amber:hover { background: #ffbb1f; transform: translateY(-2px) rotate(-1deg); box-shadow: 0 8px 24px rgba(240,168,14,0.45); }
+    .btn-amber:active { transform: translateY(0); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.75); border: 2px solid rgba(255,255,255,0.25); }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.6); transform: translateY(-2px) rotate(1deg); }
+    .btn-lg { padding: 0.95rem 2.1rem; font-size: 1.05rem; }
+
+    /* ─── Screenshot frames ─── */
+    .shot {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid rgba(26,31,78,0.1);
+      box-shadow:
+        0 2px 4px rgba(14,22,38,0.05),
+        0 16px 40px -8px rgba(14,22,38,0.16),
+        0 40px 90px -20px rgba(26,31,78,0.22);
+      overflow: hidden;
+    }
+    .shot-bar {
+      height: 36px; display: flex; align-items: center; gap: 7px;
+      padding: 0 15px; background: #f4f3ef; border-bottom: 1px solid rgba(26,31,78,0.07);
+    }
+    .shot-bar i { width: 11px; height: 11px; border-radius: 50%; }
+    .shot-bar i:nth-child(1) { background: var(--coral); }
+    .shot-bar i:nth-child(2) { background: var(--amber); }
+    .shot-bar i:nth-child(3) { background: var(--green); }
+    .shot img { width: 100%; }
 
     /* ─── HERO ─── */
     .hero {
       background: var(--navy);
-      padding: clamp(7rem, 13vw, 11rem) 0 clamp(4rem, 8vw, 7rem);
-      position: relative; overflow: hidden;
+      padding: clamp(8rem, 13vw, 11.5rem) 0 0;
+      position: relative;
+      overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 65% 35%, rgba(240,168,14,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 75%, rgba(80,110,220,0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 75% 55% at 50% 0%, rgba(240,168,14,0.12) 0%, transparent 62%),
+        radial-gradient(ellipse 45% 70% at 6% 85%, rgba(124,158,240,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 70% at 94% 80%, rgba(176,124,240,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-inner {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem); align-items: center;
-      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 2;
+      max-width: 920px; margin: 0 auto; text-align: center;
       padding: 0 clamp(1.25rem, 4vw, 3rem);
     }
-    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } }
-
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(240,168,14,0.12); border: 1px solid rgba(240,168,14,0.25);
-      border-radius: 100px; padding: 0.3rem 0.85rem; margin-bottom: 1.75rem;
+      background: rgba(240,168,14,0.12); border: 1.5px solid rgba(240,168,14,0.35);
+      border-radius: 100px; padding: 0.35rem 1rem; margin-bottom: 2rem;
+      transform: rotate(-1.5deg);
     }
-    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
-    .hero-badge span { color: var(--amber); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; }
-
-    .hero-copy h1 { color: #fff; margin-bottom: 1.25rem; }
-    .hero-copy h1 em { color: var(--amber); font-style: normal; }
-    .hero-sub { color: rgba(255,255,255,0.62); font-size: 1.1rem; line-height: 1.75; margin-bottom: 1.75rem; max-width: 480px; }
-
-    .hero-ctas { display: flex; gap: 0.875rem; flex-wrap: wrap; align-items: center; }
-    .hero-note { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(255,255,255,0.28); }
-
-    /* Scenario carousel */
-    .hero-visual { display: flex; align-items: center; justify-content: center; }
-    .scenarios-wrap { width: 100%; max-width: 440px; }
-    .scenarios-inner { position: relative; min-height: 200px; margin-bottom: 1rem; }
-    .scenario { display: none; flex-direction: column; gap: 0.75rem; animation: sceneFade 0.4s ease; }
-    .scenario.active { display: flex; }
-    @keyframes sceneFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-
-    .msg-user {
-      align-self: flex-end;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px 16px 4px 16px;
-      padding: 0.75rem 1rem; font-size: 0.88rem; color: rgba(255,255,255,0.88);
-      max-width: 88%; line-height: 1.45;
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+    .hero-badge span { color: var(--amber-soft); font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; }
+    .hero h1 { color: #fff; margin-bottom: 1.5rem; }
+    .hero h1 .swap-wrap {
+      display: inline-block; position: relative; text-align: left;
+      color: var(--amber); min-width: 7.2ch;
     }
-    .msg-reply {
-      align-self: flex-start;
-      background: rgba(240,168,14,0.1); border: 1px solid rgba(240,168,14,0.2);
-      border-radius: 16px 16px 16px 4px;
-      padding: 0.75rem 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.78);
-      max-width: 88%; line-height: 1.55;
+    .hero h1 .swap { display: inline-block; }
+    .hero-sub {
+      color: rgba(255,255,255,0.66); font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      line-height: 1.65; margin: 0 auto 2.2rem; max-width: 640px;
     }
-    .msg-reply strong { color: var(--amber); font-weight: 600; }
+    .hero-sub strong { color: #fff; font-weight: 600; }
+    .hero-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .hero-note { margin-top: 1.4rem; font-size: 0.84rem; color: rgba(255,255,255,0.38); }
 
-    .scenario-dots { display: flex; gap: 0.4rem; justify-content: center; }
-    .scenario-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.18); transition: background 0.3s; cursor: pointer; border: none; padding: 0; }
-    .scenario-dot.active { background: var(--amber); }
-
-    /* ─── Flywheel ─── */
-    .flywheel { background: var(--canvas); border-bottom: 1px solid rgba(22,32,64,0.07); padding: clamp(2rem,4vw,3rem) 0; }
-    .flywheel-inner { max-width: 820px; margin: 0 auto; padding: 0 clamp(1.25rem,4vw,3rem); display: flex; align-items: center; gap: clamp(1rem,3vw,2rem); }
-    .flywheel-step { flex: 1; text-align: center; }
-    .flywheel-step h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
-    .flywheel-step p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin: 0; }
-    .flywheel-arrow { color: var(--amber); font-size: 1.4rem; flex-shrink: 0; opacity: 0.7; }
-    @media (max-width: 560px) { .flywheel-inner { flex-direction: column; } .flywheel-arrow { transform: rotate(90deg); } }
-
-    /* ─── Everyday Moments ─── */
-    .moments { background: var(--canvas2); }
-    .moments-inner { max-width: 1060px; margin: 0 auto; padding: clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,3rem); }
-    .moments-head { max-width: 600px; margin: 0 auto clamp(2rem,5vw,4rem); text-align: center; }
-    .moments-head em { font-style: italic; color: var(--navy); }
-    .moments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .moment-card { background: #fff; border: 1px solid rgba(22,32,64,0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-    .moment-situation { padding: 1.1rem 1.35rem; border-bottom: 1px solid rgba(22,32,64,0.08); }
-    .moment-tag { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.5rem; }
-    .moment-situation p { font-size: 0.875rem; color: var(--ink); line-height: 1.5; margin: 0; }
-    .moment-before { padding: 0.9rem 1.35rem; background: rgba(22,32,64,0.025); border-bottom: 1px solid rgba(22,32,64,0.06); flex: 1; }
-    .moment-before-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(22,32,64,0.35); margin-bottom: 0.6rem; display: block; }
-    .moment-before ol { margin: 0; padding-left: 1.1rem; }
-    .moment-before ol li { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.2rem; }
-    .moment-after { padding: 0.9rem 1.35rem; border-top: 2px solid rgba(240,168,14,0.3); }
-    .moment-after-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; display: block; }
-    .moment-after p { font-size: 0.82rem; color: var(--navy); line-height: 1.5; margin: 0; font-weight: 500; }
-    @media (max-width: 680px) { .moments-grid { grid-template-columns: 1fr; } }
-
-    /* ─── Arc ─── */
-    .arc { background: var(--canvas); padding: clamp(4rem,10vw,8rem) 0; }
-    .arc-inner { max-width: 1000px; margin: 0 auto; padding: 0 clamp(1.25rem,4vw,3rem); }
-    .arc-head { max-width: 560px; margin: 0 auto clamp(3rem,6vw,5rem); text-align: center; }
-    .arc-stages { display: flex; flex-direction: column; gap: clamp(3.5rem,7vw,6rem); }
-    .arc-stage { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: center; }
-    .arc-stage:nth-child(even) .arc-stage-copy { order: 2; }
-    .arc-stage:nth-child(even) .arc-stage-visual { order: 1; }
-    .arc-stage-copy h3 { font-size: clamp(1.5rem,2.8vw,2.2rem); font-weight: 750; color: var(--navy); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 0.875rem; }
-    .arc-stage-copy p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin: 0; }
-    .arc-stage-visual { border-radius: 24px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; }
-    .arc-stage:nth-child(1) .arc-stage-visual { background: rgba(240,168,14,0.1); }
-    .arc-stage:nth-child(2) .arc-stage-visual { background: rgba(22,32,64,0.06); }
-    .arc-stage:nth-child(3) .arc-stage-visual { background: rgba(90,209,138,0.09); }
-    .arc-stage:nth-child(4) .arc-stage-visual { background: rgba(124,158,240,0.1); }
-    .arc-stage:nth-child(5) .arc-stage-visual { background: rgba(176,124,240,0.09); }
-    .arc-stage:nth-child(6) .arc-stage-visual { background: rgba(240,120,90,0.09); }
-    @media (max-width: 700px) {
-      .arc-stage { grid-template-columns: 1fr; }
-      .arc-stage:nth-child(even) .arc-stage-copy { order: 1; }
-      .arc-stage:nth-child(even) .arc-stage-visual { order: 2; }
-      .arc-stage-visual { aspect-ratio: 16/5; }
+    /* floating capture chips */
+    .chip {
+      position: absolute; z-index: 1;
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1rem; border-radius: 100px;
+      font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+      color: #fff; white-space: nowrap;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
+    .chip .em { font-size: 1.05rem; }
+    .chip-voice   { top: 19%; left: 6%;  transform: rotate(-7deg); border-color: rgba(90,209,138,0.55); }
+    .chip-wa      { top: 38%; left: 2.5%; transform: rotate(4deg);  border-color: rgba(124,158,240,0.55); }
+    .chip-pdf     { top: 22%; right: 5%; transform: rotate(6deg);  border-color: rgba(240,120,90,0.55); }
+    .chip-meet    { top: 42%; right: 3%; transform: rotate(-4deg); border-color: rgba(240,168,14,0.6); }
+    .chip-promise { top: 60%; left: 8%;  transform: rotate(3deg);  border-color: rgba(176,124,240,0.55); }
+    .chip-idea    { top: 63%; right: 8%; transform: rotate(-6deg); border-color: rgba(255,217,120,0.5); }
+    @media (max-width: 1080px) { .chip { display: none; } }
 
-    /* ─── Capture ─── */
-    .capture { background: var(--canvas2); }
-    .capture-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem); align-items: center;
-      max-width: 1280px; margin: 0 auto;
+    .hero-shot-wrap {
+      position: relative; z-index: 2;
+      max-width: 1040px; margin: clamp(3rem, 6vw, 4.5rem) auto 0;
       padding: 0 clamp(1.25rem, 4vw, 3rem);
     }
-    @media (max-width: 768px) { .capture-grid { grid-template-columns: 1fr; } }
-    .capture-copy .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .capture-copy h2 { color: var(--navy); margin-bottom: 1rem; }
-    .capture-copy p { color: #4a5568; font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1.5rem; }
-    .capture-methods { display: flex; flex-direction: column; gap: 0.75rem; }
-    .capture-method {
-      display: flex; align-items: flex-start; gap: 1rem;
-      background: #fff; border: 1px solid rgba(26,31,78,0.08);
-      border-radius: var(--r-md); padding: 1.1rem 1.25rem;
+    .hero-shot-wrap .shot { border-radius: 20px 20px 0 0; border-bottom: none; box-shadow: 0 -10px 80px -10px rgba(240,168,14,0.18), 0 -4px 40px rgba(0,0,0,0.4); }
+    .hero-caption {
+      position: relative; z-index: 2; text-align: center;
+      font-size: 0.84rem; color: rgba(255,255,255,0.42); padding: 0 0 1.2rem;
     }
+
+    /* ─── Marquee ─── */
+    .marquee-band {
+      background: var(--amber);
+      transform: rotate(-1.6deg) scale(1.02);
+      margin: -1.2rem 0 0; position: relative; z-index: 5;
+      overflow: hidden; border: 2px solid var(--navy-deep);
+      box-shadow: 0 6px 0 rgba(19,23,55,0.9);
+    }
+    .marquee { display: flex; width: max-content; padding: 0.7rem 0; }
+    .marquee span {
+      font-family: var(--font-display); font-weight: 780; font-size: 1.02rem;
+      color: var(--navy); letter-spacing: 0.01em;
+      padding: 0 1.1rem; white-space: nowrap;
+    }
+    .marquee .sep { opacity: 0.55; }
+
+    /* ─── Capture ─── */
+    .capture { background: var(--canvas); padding: clamp(5rem, 10vw, 8.5rem) 0 clamp(4rem, 9vw, 7.5rem); }
+    .capture-head { max-width: 680px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+    .capture-head h2 { color: var(--navy); margin-top: 1rem; }
+    .capture-head h2 .serif-pop { color: #b57d00; font-size: 1.12em; }
+    .capture-head > p { margin-top: 1rem; color: var(--body); font-size: 1.0625rem; }
+    .capture-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    @media (max-width: 820px) { .capture-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+    .capture-card {
+      background: #fff; border: 2px solid rgba(26,31,78,0.1);
+      border-radius: var(--r-lg); padding: 2.1rem 1.8rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+    }
+    .capture-card:hover { transform: translateY(-6px) rotate(-0.6deg); box-shadow: 0 18px 44px -12px rgba(26,31,78,0.2); border-color: rgba(240,168,14,0.6); }
+    .capture-card:nth-child(2):hover { transform: translateY(-6px) rotate(0.6deg); }
     .capture-icon {
-      font-size: 1.3rem; flex-shrink: 0;
-      width: 40px; height: 40px;
+      width: 52px; height: 52px; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(26,31,78,0.04); border-radius: var(--r-sm);
+      font-size: 1.5rem; margin-bottom: 1.3rem; transform: rotate(-4deg);
     }
-    .capture-method h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
-    .capture-method p { font-size: 0.82rem; color: #667; line-height: 1.5; }
+    .capture-card:nth-child(1) .capture-icon { background: rgba(90,209,138,0.16); border: 2px solid rgba(90,209,138,0.5); }
+    .capture-card:nth-child(2) .capture-icon { background: rgba(240,120,90,0.14); border: 2px solid rgba(240,120,90,0.45); }
+    .capture-card:nth-child(3) .capture-icon { background: rgba(124,158,240,0.16); border: 2px solid rgba(124,158,240,0.5); }
+    .capture-card h3 { font-size: 1.18rem; font-weight: 730; color: var(--navy); margin-bottom: 0.55rem; letter-spacing: -0.01em; }
+    .capture-card p { font-size: 0.93rem; color: var(--body); line-height: 1.65; }
 
-    /* ─── DIFM ─── */
-    .difm { background: var(--navy); }
-    .difm-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .difm-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-    .difm-head .t-label { color: rgba(240,168,14,0.7); margin-bottom: 0.75rem; }
-    .difm-head h2 { color: #fff; margin-bottom: 0.75rem; }
-    .difm-head p { color: rgba(255,255,255,0.48); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; line-height: 1.65; }
-
-    .difm-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 860px; margin: 0 auto; }
-    @media (max-width: 600px) { .difm-cols { grid-template-columns: 1fr; } }
-
-    .difm-col { border-radius: var(--r-lg); padding: 2rem; }
-    .difm-col.diy { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
-    .difm-col.difm-yes { background: rgba(240,168,14,0.08); border: 1px solid rgba(240,168,14,0.2); }
-    .difm-col-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.875rem; display: block; }
-    .diy .difm-col-tag { color: rgba(255,255,255,0.25); }
-    .difm-yes .difm-col-tag { color: var(--amber); }
-    .difm-col h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; line-height: 1.35; }
-    .diy h3 { color: rgba(255,255,255,0.45); }
-    .difm-yes h3 { color: #fff; }
-    .difm-items { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .difm-items li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.88rem; line-height: 1.45; }
-    .diy .difm-items li { color: rgba(255,255,255,0.35); }
-    .difm-yes .difm-items li { color: rgba(255,255,255,0.8); }
-    .difm-items li .di { flex-shrink: 0; font-size: 0.7rem; margin-top: 2px; }
-    .diy .difm-items li .di { color: rgba(255,255,255,0.2); }
-    .difm-yes .difm-items li .di { color: var(--amber); }
-
-    /* ─── Compound / Learns ─── */
-    .compound { background: var(--canvas); }
-    .compound-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem); align-items: center;
-      max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem);
+    /* ─── Feature rows ─── */
+    .features-lt { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
+    .feature-rows { display: flex; flex-direction: column; gap: clamp(4.5rem, 9vw, 8rem); }
+    .feature-row {
+      display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
     }
-    @media (max-width: 840px) { .compound-grid { grid-template-columns: 1fr; } }
-    .compound-copy .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .compound-copy h2 { color: var(--navy); margin-bottom: 1rem; }
-    .compound-copy p { color: #4a5568; font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1rem; }
-    .compound-copy blockquote {
-      border-left: 3px solid var(--amber); padding: 0.5rem 0 0.5rem 1.25rem;
-      margin: 1.5rem 0; font-size: 0.975rem; color: var(--navy);
-      font-style: italic; line-height: 1.65;
+    .feature-row.flip .feature-copy { order: 2; }
+    .feature-row.flip .feature-visual { order: 1; }
+    @media (max-width: 820px) {
+      .feature-row, .feature-row.flip { grid-template-columns: 1fr; }
+      .feature-row.flip .feature-copy { order: 1; }
+      .feature-row.flip .feature-visual { order: 2; }
     }
-
-    /* Timeline visual */
-    .timeline { background: var(--navy); border-radius: var(--r-lg); padding: 2rem 1.75rem; }
-    .tl-header { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 1.5rem; }
-    .tl-row { display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: flex-start; position: relative; }
-    .tl-row:not(:last-of-type)::after { content: ''; position: absolute; left: 4px; top: 14px; bottom: -1.25rem; width: 1px; background: rgba(255,255,255,0.08); }
-    .tl-dot { flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%; margin-top: 4px; position: relative; z-index: 1; }
-    .tl-dot.amber { background: var(--amber); }
-    .tl-dot.blue { background: #7c9ef0; }
-    .tl-dot.green { background: #5ad18a; }
-    .tl-dot.purple { background: #b07cf0; }
-    .tl-date { font-size: 0.67rem; color: rgba(255,255,255,0.28); margin-bottom: 0.15rem; }
-    .tl-text { font-size: 0.83rem; color: rgba(255,255,255,0.72); line-height: 1.45; }
-    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
-    .tl-tag { padding: 0.15rem 0.5rem; border-radius: 100px; font-size: 0.63rem; font-weight: 500; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.45); }
-    .tl-tag.amber { background: rgba(240,168,14,0.15); color: var(--amber); }
-    .tl-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 1.25rem 0; }
-    .tl-footer { display: flex; align-items: center; gap: 0.5rem; }
-    .tl-footer-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.12); }
-    .tl-footer span { font-size: 0.72rem; color: rgba(255,255,255,0.22); }
-    .tl-count { margin-left: auto; font-size: 0.7rem; color: var(--amber); font-weight: 600; }
-
-    /* ─── Vaults ─── */
-    .vaults { background: var(--canvas2); }
-    .vaults-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .vaults-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-    .vaults-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .vaults-head h2 { color: var(--navy); margin-bottom: 0.75rem; }
-    .vaults-head p { color: #556; font-size: 1.0625rem; max-width: 580px; margin: 0 auto; line-height: 1.65; }
-    .vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    @media (max-width: 768px) { .vault-grid { grid-template-columns: 1fr; } }
-    .vault-card { background: #fff; border: 1px solid rgba(26,31,78,0.08); border-radius: var(--r-lg); padding: 2rem 1.75rem; }
-    .vault-card.featured { background: var(--navy); border-color: transparent; }
-    .vault-icon { font-size: 1.75rem; margin-bottom: 1.25rem; display: block; }
-    .vault-card h3 { font-size: 1.1rem; font-weight: 750; color: var(--navy); margin-bottom: 0.5rem; }
-    .vault-card.featured h3 { color: #fff; }
-    .vault-card > p { font-size: 0.9rem; color: #556; line-height: 1.65; margin-bottom: 1.25rem; }
-    .vault-card.featured > p { color: rgba(255,255,255,0.52); }
-    .vault-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .vault-tag { padding: 0.2rem 0.65rem; border-radius: 100px; font-size: 0.72rem; font-weight: 500; background: rgba(26,31,78,0.06); color: var(--navy); }
-    .vault-card.featured .vault-tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.58); }
-
-    /* ─── Daily Brief ─── */
-    .daily-brief {
-      background: rgba(240,168,14,0.05);
-      border-top: 1px solid rgba(240,168,14,0.13);
-      border-bottom: 1px solid rgba(240,168,14,0.13);
-      padding: clamp(2.5rem, 5vw, 4rem) 0;
+    .feature-copy h3 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 740; color: var(--navy); line-height: 1.06; letter-spacing: -0.022em; margin: 1rem 0; }
+    .feature-copy .feature-sub { font-size: 1.05rem; color: var(--body); line-height: 1.7; margin-bottom: 0.9rem; }
+    .feature-copy .feature-line { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+    .feature-copy .feature-line strong { color: var(--navy); font-weight: 650; }
+    .q {
+      display: inline-block; background: #fff; border: 2px solid rgba(26,31,78,0.14);
+      border-radius: 16px 16px 16px 4px; padding: 0.4rem 0.85rem;
+      color: var(--navy); font-weight: 600; transform: rotate(-1deg);
     }
-    .daily-brief-inner { max-width: 760px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); text-align: center; }
-    .daily-brief-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; display: block; }
-    .daily-brief-sub { font-size: 1.0625rem; color: var(--navy); font-weight: 700; margin-bottom: 1.75rem; }
-    .db-card {
-      background: var(--navy); border-radius: var(--r-lg); padding: 1.75rem 2rem;
-      text-align: left; position: relative; overflow: hidden;
+    .feature-visual { position: relative; }
+    .feature-visual .doodle {
+      position: absolute; z-index: 2; font-size: 1.9rem;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
     }
-    .db-card::before {
+    .doodle.tl { top: -1.1rem; left: -0.9rem; transform: rotate(-12deg); }
+    .doodle.br { bottom: -1.1rem; right: -0.7rem; transform: rotate(10deg); }
+
+    /* ─── Council (navy) ─── */
+    .council { background: var(--navy); padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; overflow: hidden; }
+    .council::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 85% 15%, rgba(240,168,14,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 70% at 82% 15%, rgba(240,168,14,0.1) 0%, transparent 62%);
       pointer-events: none;
     }
-    .db-greeting { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.4rem; }
-    .db-greeting::before { content: '●'; font-size: 0.45rem; }
-    .db-items { display: flex; flex-direction: column; gap: 0.65rem; }
-    .db-item { display: flex; align-items: flex-start; gap: 0.875rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border-radius: var(--r-sm); border: 1px solid rgba(255,255,255,0.07); }
-    .db-item-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-    .db-item-body { flex: 1; }
-    .db-item-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.45; }
-    .db-item-text strong { color: #fff; font-weight: 600; }
-    .db-item-meta { font-size: 0.7rem; color: rgba(255,255,255,0.25); margin-top: 0.2rem; }
-
-    /* ─── Who it's for ─── */
-    .personas { background: var(--canvas); }
-    .persona-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 1280px; margin-left: auto; margin-right: auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .persona-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .persona-head h2 { color: var(--navy); margin-bottom: 0.75rem; }
-    .persona-head p { color: #556; font-size: 1.0625rem; max-width: 520px; margin: 0 auto; }
-    .persona-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    @media (max-width: 960px) { .persona-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .persona-grid { grid-template-columns: 1fr; } }
-    .persona-card { background: #fff; border: 1px solid rgba(26,31,78,0.08); border-radius: var(--r-lg); padding: 1.75rem 1.5rem; }
-    .persona-icon { width: 48px; height: 48px; border-radius: var(--r-md); background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem; }
-    .persona-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
-    .persona-role { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-bottom: 0.875rem; display: block; }
-    .persona-card p { font-size: 0.875rem; color: #556; line-height: 1.62; }
-
-    /* ─── Features scroll ─── */
-    .features { background: var(--navy); }
-    .features .section-head .t-label { color: rgba(240,168,14,0.65); }
-    .features .section-head h2 { color: #fff; }
-    .features .section-head p { color: rgba(255,255,255,0.48); }
-    .features .section-head { text-align: center; margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 1280px; margin-left: auto; margin-right: auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .feat-scroll-outer { position: relative; }
-    .feat-scroll-outer::after { content: ''; position: absolute; right: 0; top: 0; bottom: 2rem; width: clamp(3rem, 7vw, 5rem); background: linear-gradient(to right, transparent, var(--navy)); pointer-events: none; z-index: 1; }
-    .feat-scroll-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-snap-type: x mandatory; padding: 0.25rem clamp(1.25rem, 4vw, 3rem) 2rem; cursor: grab; }
-    .feat-scroll-wrap::-webkit-scrollbar { display: none; }
-    .feat-scroll-wrap.is-dragging { cursor: grabbing; user-select: none; }
-    .feat-scroll { display: flex; gap: 1rem; }
-    .feat-card { width: 280px; flex-shrink: 0; scroll-snap-align: start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.25s; }
-    .feat-card:hover { border-color: rgba(255,255,255,0.22); }
-    .feat-card-visual { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 2.75rem; }
-    .feat-card:nth-child(1) .feat-card-visual { background: rgba(240,168,14,0.12); }
-    .feat-card:nth-child(2) .feat-card-visual { background: rgba(124,158,240,0.12); }
-    .feat-card:nth-child(3) .feat-card-visual { background: rgba(90,209,138,0.1); }
-    .feat-card:nth-child(4) .feat-card-visual { background: rgba(176,124,240,0.1); }
-    .feat-card:nth-child(5) .feat-card-visual { background: rgba(240,120,90,0.1); }
-    .feat-card:nth-child(6) .feat-card-visual { background: rgba(240,168,14,0.12); }
-    .feat-card-body { padding: 1.5rem; flex: 1; }
-    .feat-card h4 { font-size: 0.975rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
-    .feat-card p { font-size: 0.82rem; color: rgba(255,255,255,0.48); line-height: 1.55; }
-    .feat-hint { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; padding-bottom: 0.5rem; }
-
-    /* ─── Principles ─── */
-    .principles { background: var(--canvas2); }
-    .principles-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .principles-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-    .principles-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .principles-head h2 { color: var(--navy); margin-bottom: 0.75rem; }
-    .principles-head p { color: #556; font-size: 1.0625rem; max-width: 560px; margin: 0 auto; line-height: 1.65; }
-    .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    @media (max-width: 768px) { .principles-grid { grid-template-columns: 1fr; } }
-    .principle-card { background: #fff; border: 1px solid rgba(26,31,78,0.08); border-radius: var(--r-lg); padding: 2rem 1.75rem; }
-    .principle-icon { font-size: 1.75rem; margin-bottom: 1.25rem; display: block; }
-    .principle-card h3 { font-size: 1.05rem; font-weight: 750; color: var(--navy); margin-bottom: 0.6rem; }
-    .principle-card p { font-size: 0.9rem; color: #556; line-height: 1.7; }
-
-    /* ─── Comparison ─── */
-    .compare { background: var(--canvas); }
-    .compare-inner { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .compare-head { text-align: center; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
-    .compare-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .compare-head h2 { color: var(--navy); margin-bottom: 0.75rem; }
-    .compare-head p { color: #556; font-size: 1.0625rem; max-width: 500px; margin: 0 auto; }
-    .comp-table-wrap { border-radius: var(--r-lg); overflow: hidden; border: 1px solid rgba(26,31,78,0.08); overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    @media (max-width: 640px) {
-      .comp-table th:first-child, .comp-table td:first-child { position: sticky; left: 0; z-index: 1; }
-      .comp-table th:first-child { background: var(--navy); }
-      .comp-table td:first-child { background: #fff; }
-      .comp-table td.hi:first-child { background: rgba(240,168,14,0.04); }
+    .council-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
     }
-    .comp-table { width: 100%; border-collapse: collapse; min-width: 520px; }
-    .comp-table th { padding: 1rem 1.25rem; background: var(--navy); color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 600; text-align: left; letter-spacing: 0.02em; }
-    .comp-table th.hi { color: var(--amber); }
-    .comp-table td { padding: 0.85rem 1.25rem; font-size: 0.875rem; color: #445; background: #fff; border-bottom: 1px solid rgba(26,31,78,0.05); }
-    .comp-table td.feat { color: #667; font-weight: 400; }
-    .comp-table td.hi { color: var(--navy); font-weight: 600; background: rgba(240,168,14,0.04); }
-    .comp-table tr:last-child td { border-bottom: none; }
-    .check { color: #28a87a; font-weight: 700; }
-    .cross { color: #c0392b; }
-    .partial { color: #e08a00; }
+    @media (max-width: 820px) { .council-grid { grid-template-columns: 1fr; } }
+    .council-copy h3 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 740; color: #fff; line-height: 1.06; letter-spacing: -0.022em; margin: 1rem 0; }
+    .council-copy h3 .serif-pop { color: var(--amber-soft); }
+    .council-copy .feature-sub { font-size: 1.05rem; color: rgba(255,255,255,0.64); line-height: 1.7; margin-bottom: 0.9rem; }
+    .council-copy .feature-line { font-size: 0.92rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
 
-    /* ─── Pricing ─── */
-    .pricing { background: var(--canvas2); }
-    .pricing-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 1160px; margin-left: auto; margin-right: auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .pricing-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .pricing-head h2 { color: var(--navy); margin-bottom: 0.75rem; }
-    .pricing-head p { color: #556; font-size: 1.0625rem; max-width: 480px; margin: 0 auto; }
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); align-items: start; }
-    @media (max-width: 860px) { .price-grid { grid-template-columns: 1fr; max-width: 520px; } }
-    .price-card { background: #fff; border: 1px solid rgba(26,31,78,0.09); border-radius: var(--r-lg); padding: 2rem 1.75rem; display: flex; flex-direction: column; }
-    .price-card.featured { background: var(--navy); border-color: transparent; box-shadow: 0 12px 40px rgba(26,31,78,0.18); }
-    .price-tier { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; display: block; }
-    .price-card.featured .price-tier { color: var(--amber); }
-    .price-card h3 { font-size: 1.25rem; font-weight: 750; color: var(--navy); margin-bottom: 0.35rem; }
-    .price-card.featured h3 { color: #fff; }
-    .price-amount { font-size: 2.2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; margin-bottom: 0.2rem; }
-    .price-card.featured .price-amount { color: #fff; }
-    .price-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; display: block; }
-    .price-card.featured .price-period { color: rgba(255,255,255,0.4); }
-    .price-features { list-style: none; flex: 1; margin-bottom: 1.5rem; }
-    .price-features li { display: flex; gap: 0.5rem; font-size: 0.875rem; color: #445; padding: 0.4rem 0; border-bottom: 1px solid rgba(26,31,78,0.05); }
-    .price-card.featured .price-features li { color: rgba(255,255,255,0.62); border-bottom-color: rgba(255,255,255,0.06); }
+    /* ─── Frugal (receipt) ─── */
+    .frugal { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .frugal-grid {
+      display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+    }
+    @media (max-width: 820px) { .frugal-grid { grid-template-columns: 1fr; } }
+    .frugal-copy h3 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 740; color: var(--navy); line-height: 1.06; letter-spacing: -0.022em; margin: 1rem 0; }
+    .frugal-copy h3 .serif-pop { color: #b57d00; }
+    .frugal-copy .feature-sub { font-size: 1.05rem; color: var(--body); line-height: 1.7; margin-bottom: 0.9rem; }
+    .frugal-copy .feature-line { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+    .frugal-copy .feature-line strong { color: var(--navy); font-weight: 650; }
+    .receipt-wrap { display: flex; justify-content: center; }
+    .receipt {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      background: #fff; color: var(--ink);
+      width: min(100%, 400px); padding: 1.9rem 1.7rem 1.5rem;
+      transform: rotate(1.8deg);
+      border-radius: 6px;
+      box-shadow: 0 3px 6px rgba(14,22,38,0.08), 0 22px 50px -12px rgba(26,31,78,0.28);
+      position: relative;
+    }
+    .receipt::before, .receipt::after {
+      content: ''; position: absolute; left: 0; right: 0; height: 10px;
+      background:
+        linear-gradient(-45deg, transparent 66%, #fff 68%),
+        linear-gradient(45deg, transparent 66%, #fff 68%);
+      background-size: 14px 14px; background-repeat: repeat-x;
+    }
+    .receipt::before { top: -9px; transform: scaleY(-1); }
+    .receipt::after { bottom: -9px; }
+    .receipt-head { text-align: center; margin-bottom: 1.2rem; }
+    .receipt-head .rc-title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.14em; }
+    .receipt-head .rc-sub { font-size: 0.68rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.05em; }
+    .receipt-items { border-top: 1.5px dashed rgba(26,31,78,0.3); border-bottom: 1.5px dashed rgba(26,31,78,0.3); padding: 0.9rem 0; margin-bottom: 0.9rem; }
+    .receipt-row { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; font-size: 0.76rem; padding: 0.32rem 0; }
+    .receipt-row .rc-item { color: #333c4e; }
+    .receipt-row .rc-note { display: block; font-size: 0.62rem; color: var(--muted); margin-top: 0.1rem; }
+    .receipt-row .rc-price { font-weight: 700; color: #2a9c5c; white-space: nowrap; }
+    .receipt-total { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; padding-bottom: 0.9rem; }
+    .receipt-total .rc-price { color: #2a9c5c; }
+    .receipt-foot { text-align: center; font-size: 0.64rem; color: var(--muted); letter-spacing: 0.04em; border-top: 1.5px dashed rgba(26,31,78,0.3); padding-top: 0.85rem; }
+    .receipt-barcode { margin: 0.7rem auto 0; height: 26px; width: 60%; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 9px); opacity: 0.8; }
+
+    /* ─── Supplements ─── */
+    .supp { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .supp-head { max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+    .supp-head h2 { color: var(--navy); margin: 1rem 0; }
+    .supp-head h2 .serif-pop { color: #b57d00; font-size: 1.1em; }
+    .supp-head p { color: var(--body); font-size: 1.0625rem; line-height: 1.7; }
+    .supp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; max-width: 940px; margin: 0 auto; }
+    @media (max-width: 720px) { .supp-grid { grid-template-columns: 1fr; max-width: 480px; } }
+    .supp-card {
+      background: #fff; border: 2px solid rgba(26,31,78,0.1); border-radius: var(--r-lg);
+      padding: 1.9rem 1.7rem; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+    }
+    .supp-card:hover { transform: translateY(-5px) rotate(-0.4deg); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); border-color: rgba(240,168,14,0.55); }
+    .supp-card:nth-child(even):hover { transform: translateY(-5px) rotate(0.4deg); }
+    .supp-icon { font-size: 1.6rem; margin-bottom: 1rem; display: inline-block; transform: rotate(-5deg); }
+    .supp-card h3 { font-size: 1.1rem; font-weight: 730; color: var(--navy); margin-bottom: 0.5rem; }
+    .supp-card p { font-size: 0.91rem; color: var(--body); line-height: 1.66; }
+    .supp-card p code {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.8em;
+      background: rgba(240,168,14,0.14); border: 1px solid rgba(240,168,14,0.3);
+      border-radius: 5px; padding: 0.1em 0.4em; color: #7c5800;
+    }
+
+    /* ─── Ownership ─── */
+    .own { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .own-head { max-width: 760px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+    .own-head h2 { color: var(--navy); margin: 1rem 0; }
+    .own-head h2 .serif-pop { color: #b57d00; font-size: 1.1em; }
+    .own-head p { color: var(--body); font-size: 1.0625rem; line-height: 1.7; }
+    .own-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    @media (max-width: 820px) { .own-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+    .own-card {
+      background: #fff; border: 2px solid rgba(26,31,78,0.1); border-radius: var(--r-lg);
+      padding: 2.1rem 1.8rem; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .own-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); }
+    .own-icon { font-size: 1.8rem; margin-bottom: 1.1rem; display: inline-block; transform: rotate(-6deg); }
+    .own-card h3 { font-size: 1.12rem; font-weight: 730; color: var(--navy); margin-bottom: 0.55rem; }
+    .own-card p { font-size: 0.91rem; color: var(--body); line-height: 1.68; }
+
+    /* ─── Personas ─── */
+    .personas { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .persona-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .persona-head h2 { color: var(--navy); margin: 1rem 0 0.75rem; }
+    .persona-head p { color: var(--body); font-size: 1.0625rem; max-width: 520px; margin: 0 auto; }
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    @media (max-width: 820px) { .persona-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+    .persona-card {
+      background: #fff; border: 2px solid rgba(26,31,78,0.09); border-radius: var(--r-lg);
+      padding: 2rem 1.7rem; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .persona-card:hover { transform: translateY(-5px) rotate(0.5deg); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); }
+    .persona-card:nth-child(2):hover { transform: translateY(-5px) rotate(-0.5deg); }
+    .persona-icon {
+      width: 52px; height: 52px; border-radius: 16px; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem; transform: rotate(-5deg);
+      box-shadow: 3px 3px 0 var(--amber);
+    }
+    .persona-card h3 { font-size: 1.12rem; font-weight: 730; color: var(--navy); margin-bottom: 0.3rem; }
+    .persona-role { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-bottom: 0.875rem; display: block; }
+    .persona-card p { font-size: 0.91rem; color: var(--body); line-height: 1.65; }
+
+    /* ─── Early access ─── */
+    .pricing { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .pricing-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .pricing-head h2 { color: var(--navy); margin: 1rem 0 0.75rem; }
+    .pricing-head p { color: var(--body); font-size: 1.0625rem; max-width: 500px; margin: 0 auto; }
+    .price-card {
+      max-width: 640px; margin: 0 auto; text-align: center;
+      background: var(--navy); border-radius: var(--r-lg); padding: 2.6rem 2.3rem;
+      box-shadow: 8px 8px 0 var(--amber);
+      border: 2px solid var(--navy-deep);
+    }
+    .price-tier { font-family: var(--font-display); font-size: 0.75rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; display: block; }
+    .price-card h3 { font-size: 1.7rem; font-weight: 760; color: #fff; margin-bottom: 0.5rem; }
+    .price-card > p { color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.75rem; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 1.9rem; }
+    .price-features li { display: flex; gap: 0.6rem; font-size: 0.92rem; color: rgba(255,255,255,0.64); padding: 0.48rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .price-features li:last-child { border-bottom: none; }
-    .pi { flex-shrink: 0; color: #28a87a; }
-    .price-card.featured .pi { color: var(--amber); }
-    .price-cta { display: block; text-align: center; padding: 0.75rem; border-radius: var(--r-sm); font-size: 0.9rem; font-weight: 650; text-decoration: none; transition: all 0.2s; }
-    .price-cta-light { background: rgba(26,31,78,0.06); color: var(--navy); }
-    .price-cta-light:hover { background: rgba(26,31,78,0.1); }
-    .price-cta-amber { background: var(--amber); color: var(--navy); }
-    .price-cta-amber:hover { background: #f8b820; }
+    .pi { flex-shrink: 0; color: var(--amber); font-weight: 700; }
+    .price-cta {
+      display: block; text-align: center; padding: 0.95rem; border-radius: 100px;
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 750; text-decoration: none;
+      background: var(--amber); color: var(--navy); transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+    }
+    .price-cta:hover { background: #ffbb1f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,168,14,0.4); }
 
     /* ─── FAQ ─── */
-    .faq { background: var(--canvas); }
-    .faq-head { text-align: center; margin-bottom: 2.5rem; max-width: 860px; margin-left: auto; margin-right: auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .faq-head .t-label { color: var(--muted); margin-bottom: 0.75rem; }
-    .faq-head h2 { color: var(--navy); }
-    .faq-list { max-width: 860px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .faq-item { border-bottom: 1px solid rgba(26,31,78,0.09); }
-    .faq-q { font-size: 0.975rem; font-weight: 650; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 0; user-select: none; }
-    .faq-chevron { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(26,31,78,0.07); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; transition: transform 0.2s; color: var(--navy); }
+    .faq { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 7rem) 0; }
+    .faq-head { text-align: center; margin-bottom: 2.5rem; }
+    .faq-head h2 { color: var(--navy); margin-top: 1rem; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 2px solid rgba(26,31,78,0.1); }
+    .faq-q { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; user-select: none; }
+    .faq-chevron { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--amber); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; transition: transform 0.25s ease; }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-a { font-size: 0.925rem; color: #556; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s; }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1.25rem; }
+    .faq-a { font-size: 0.94rem; color: var(--body); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s; }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1.35rem; }
 
     /* ─── CTA Band ─── */
-    .ctaband { background: var(--navy); text-align: center; }
-    .ctaband-inner { max-width: 820px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .ctaband .t-label { color: var(--amber); margin-bottom: 0.875rem; }
-    .ctaband h2 { color: #fff; margin-bottom: 1rem; }
-    .ctaband h2 em { color: var(--amber); font-style: normal; }
-    .ctaband .sub { color: rgba(255,255,255,0.55); font-size: 1.0625rem; margin-bottom: 2rem; line-height: 1.65; }
-    .ctaband-btns { display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap; }
+    .ctaband { background: var(--navy); text-align: center; padding: clamp(5rem, 10vw, 8.5rem) 0; position: relative; overflow: hidden; }
+    .ctaband::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(240,168,14,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ctaband-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+    .ctaband h2 { color: #fff; margin: 1.1rem 0 1rem; }
+    .ctaband h2 .serif-pop { color: var(--amber); font-size: 1.1em; }
+    .ctaband .sub { color: rgba(255,255,255,0.58); font-size: 1.0625rem; margin-bottom: 2.2rem; line-height: 1.65; }
+    .ctaband-btns { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
     /* ─── Footer ─── */
     footer { background: #0c1628; padding: 2.5rem 0; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-note { font-size: 0.78rem; color: rgba(255,255,255,0.22); margin-top: 0.25rem; }
     .footer-links { display: flex; gap: 1.5rem; list-style: none; }
     .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.32); text-decoration: none; transition: color 0.2s; }
@@ -496,69 +486,9 @@
 
     /* ─── Mobile polish ─── */
     @media (max-width: 640px) {
-      .hero-copy { text-align: center; }
-      .hero-ctas { justify-content: center; }
-      .hero-badge { margin-left: auto; margin-right: auto; }
-      .hero-note { text-align: center; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
       .ctaband-btns .btn { width: 100%; justify-content: center; }
     }
-
-    /* ─── Create & Share ─── */
-    .create { background: var(--navy); }
-    .create-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
-    .create-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-    .create-head .t-label { color: rgba(240,168,14,0.7); margin-bottom: 0.75rem; }
-    .create-head h2 { color: #fff; margin-bottom: 0.875rem; }
-    .create-head p { color: rgba(255,255,255,0.48); font-size: 1.0625rem; max-width: 580px; margin: 0 auto; line-height: 1.65; }
-    .create-flow {
-      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
-      gap: 0; align-items: start; max-width: 1000px; margin: 0 auto;
-    }
-    @media (max-width: 860px) {
-      .create-flow { grid-template-columns: 1fr; }
-      .create-arrow { transform: rotate(90deg); margin: 0.5rem auto; }
-    }
-    .create-step {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--r-lg); padding: 1.75rem 1.5rem;
-    }
-    .create-step-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; display: block; }
-    .create-step h4 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
-    .create-step p { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.55; }
-    .create-arrow { display: flex; align-items: center; justify-content: center; padding: 0 0.75rem; margin-top: 3.5rem; color: rgba(255,255,255,0.2); font-size: 1.2rem; }
-    .create-example {
-      margin: clamp(2rem, 4vw, 3.5rem) auto 0;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--r-lg); padding: 2rem; max-width: 1000px;
-    }
-    .create-example-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.25rem; display: block; }
-    .create-prompt {
-      display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.25rem;
-      padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .create-prompt-bubble { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px 12px 4px 12px; padding: 0.75rem 1rem; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.5; flex: 1; }
-    .create-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-    .create-source { display: flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0.65rem; background: rgba(240,168,14,0.1); border: 1px solid rgba(240,168,14,0.2); border-radius: 100px; font-size: 0.7rem; color: rgba(240,168,14,0.85); }
-    .create-source-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--amber); }
-    .create-sources-label { font-size: 0.68rem; color: rgba(255,255,255,0.2); align-self: center; padding-left: 0.25rem; }
-    .create-doc { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-md); padding: 1.25rem 1.5rem; }
-    .create-doc-title { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
-    .create-doc-lines { display: flex; flex-direction: column; gap: 0.4rem; }
-    .create-doc-line { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; }
-    .create-doc-line.short { width: 55%; }
-    .create-doc-line.med { width: 78%; }
-    .create-doc-line.long { width: 95%; }
-    .create-doc-actions { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
-    .create-doc-btn { padding: 0.35rem 0.85rem; border-radius: var(--r-sm); font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-    .create-doc-btn.primary { background: var(--amber); color: var(--navy); }
-    .create-doc-btn.secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); }
-
-    /* ─── Scroll reveal ─── */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal.delay-1 { transition-delay: 0.08s; }
-    .reveal.delay-2 { transition-delay: 0.16s; }
-    .reveal.delay-3 { transition-delay: 0.24s; }
 
     /* ─── Waitlist Modal ─── */
     .modal-backdrop {
@@ -571,7 +501,7 @@
     .modal-card {
       position: relative; width: 100%; max-width: 440px;
       background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 1.25rem; padding: 2rem 2.25rem; color: #f8fafc;
+      border-radius: 1.5rem; padding: 2rem 2.25rem; color: #f8fafc;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(245, 158, 11, 0.12);
       transform: scale(0.92) translateY(10px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -584,26 +514,36 @@
       transition: background 0.2s, color 0.2s; line-height: 1;
     }
     .modal-close:hover { background: rgba(255,255,255,0.16); color: #fff; }
-    .modal-badge { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; font-size: 0.75rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.75rem; }
-    .modal-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .modal-badge { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; font-size: 0.75rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.75rem; transform: rotate(-1.5deg); }
+    .modal-title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 780; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
     .modal-desc { font-size: 0.875rem; color: #94a3b8; line-height: 1.5; margin-bottom: 1.5rem; }
     .modal-form { display: flex; flex-direction: column; gap: 0.875rem; }
     .modal-input-wrap input {
       width: 100%; padding: 0.875rem 1.125rem; background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 100px;
       font-size: 0.95rem; color: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-      box-sizing: border-box;
+      box-sizing: border-box; text-align: center;
     }
     .modal-input-wrap input:focus { border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2); }
-    .modal-btn { width: 100%; justify-content: center; padding: 0.875rem; font-size: 0.95rem; font-weight: 700; border-radius: 0.75rem; }
+    .modal-btn { width: 100%; justify-content: center; padding: 0.875rem; font-size: 0.95rem; }
     .modal-error { font-size: 0.8rem; color: #ef4444; margin-top: 0.25rem; display: none; }
-    .modal-success { text-align: center; padding: 1rem 0; }
+    .modal-success { text-align: center; padding: 1rem 0 0.25rem; }
     .success-icon { width: 48px; height: 48px; background: rgba(16, 185, 129, 0.2); color: #34d399; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .modal-success h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+    .modal-success h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 750; color: #fff; margin-bottom: 0.35rem; }
     .modal-success p { font-size: 0.875rem; color: #94a3b8; }
+    .modal-share { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .modal-share p { font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem; }
+    .modal-share-btns { display: flex; gap: 0.6rem; justify-content: center; }
+    .modal-share-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      color: #e2e8f0; text-decoration: none; cursor: pointer; transition: background 0.2s;
+    }
+    .modal-share-btn:hover { background: rgba(255,255,255,0.14); }
     .modal-footer-note { font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 1.25rem; }
     .modal-footer-note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-    .modal-footer-note a:hover { color: #334155; }
+    .modal-footer-note a:hover { color: #cbd5e1; }
   </style>
 </head>
 <body>
@@ -630,56 +570,159 @@
 
 <!-- HERO -->
 <section class="hero">
+  <!-- floating capture chips -->
+  <div class="chip chip-voice" data-float="1"><span class="em">🎙️</span> voice note, 0:15</div>
+  <div class="chip chip-wa" data-float="2"><span class="em">💬</span> WhatsApp forward</div>
+  <div class="chip chip-pdf" data-float="3"><span class="em">📄</span> 80-page-report.pdf</div>
+  <div class="chip chip-meet" data-float="4"><span class="em">📅</span> call w/ Sarah, 9:15</div>
+  <div class="chip chip-promise" data-float="5"><span class="em">🤝</span> "I'll send it Friday"</div>
+  <div class="chip chip-idea" data-float="6"><span class="em">💡</span> idea, mid-walk</div>
+
   <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        <span>AI executive assistant</span>
-      </div>
-      <h1 class="t-display">
-        The executive assistant<br>that never forgets.
-      </h1>
-      <p class="hero-sub">
-        You're not lazy. You're juggling too much. Dori handles the boring parts so you can be the calmer version of yourself.
-      </p>
-      <div class="hero-ctas">
-        <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
-        <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
-      </div>
-      <p class="hero-note">Works with any AI model you already use. Your data stays yours.</p>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Your AI executive assistant</span>
     </div>
+    <h1 class="t-display">The assistant that never forgets<br><span class="swap-wrap"><span class="swap" id="swap-word">a promise.</span></span></h1>
+    <p class="hero-sub">
+      You carry a dozen clients, a hundred open threads, and every commitment you've ever made.
+      <strong>Dori remembers all of it</strong> — and has it ready the moment you ask.
+    </p>
+    <div class="hero-ctas">
+      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
+      <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
+    </div>
+    <p class="hero-note">Free in early access · Works with the AI subscription you already have · Your data stays in files you own</p>
+  </div>
+  <div class="hero-shot-wrap" id="hero-shot">
+    <div class="shot">
+      <div class="shot-bar"><i></i><i></i><i></i></div>
+      <img src="images/home.webp" width="1600" height="1000" alt="Dori home screen showing today's priority: send the updated SOW with SSO compliance clause to Sarah Jenkins" />
+    </div>
+  </div>
+  <p class="hero-caption">Dori Desktop — your day, already triaged.</p>
+</section>
 
-    <!-- Scenario carousel -->
-    <div class="hero-visual">
-      <div class="scenarios-wrap">
-        <div class="scenarios-inner">
 
-          <div class="scenario active">
-            <div class="msg-user">What did we decide about pricing in October?</div>
-            <div class="msg-reply">October call with Rajan: hold the current tier through Q1, revisit in March. You both agreed. <strong>That's still the plan.</strong></div>
-          </div>
+<!-- MARQUEE -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee" id="marquee">
+    <!-- duplicated by JS for seamless loop -->
+    <span>Voice notes → filed</span><span class="sep">✦</span>
+    <span>Meetings → minutes</span><span class="sep">✦</span>
+    <span>PDFs → read &amp; indexed</span><span class="sep">✦</span>
+    <span>Promises → tracked</span><span class="sep">✦</span>
+    <span>Clients → briefed</span><span class="sep">✦</span>
+    <span>Nothing → slips</span><span class="sep">✦</span>
+  </div>
+</div>
 
-          <div class="scenario">
-            <div class="msg-user">Catch me up before my call with Priya.</div>
-            <div class="msg-reply">Last spoke in August. She raised the contract renewal — you said you'd send revised terms. <strong>Still open.</strong> New stakeholder on her side: Vikram.</div>
-          </div>
 
-          <div class="scenario">
-            <div class="msg-user">Who did I meet at the governance event who spoke about leadership hiring?</div>
-            <div class="msg-reply">Anita Sharma — CHRO at Meridian Group. You noted she was open to advisory conversations. <strong>Her contact is in your people list.</strong></div>
-          </div>
+<!-- CAPTURE -->
+<section class="capture" id="capture">
+  <div class="container">
+    <div class="capture-head" data-animate>
+      <span class="sticker amber">Step one — capture</span>
+      <h2 class="t-h1">Getting it in takes <span class="serif-pop">seconds.</span></h2>
+      <p>No tagging. No filing. No "I'll write it up later." Dori meets you where the thought happens.</p>
+    </div>
+    <div class="capture-grid">
+      <div class="capture-card" data-animate>
+        <div class="capture-icon">🎙️</div>
+        <h3>Say it on WhatsApp</h3>
+        <p>Message Dori like a colleague. A 15-second voice note on the walk between meetings is transcribed, tagged, and linked to the right client before you're back at your desk.</p>
+      </div>
+      <div class="capture-card" data-animate>
+        <div class="capture-icon">📁</div>
+        <h3>Drop the file, walk away</h3>
+        <p>Point Dori at Downloads, Desktop, or any folder. A client sends an 80-page report — you save it, Dori reads it, files it, and connects it to the account it belongs to.</p>
+      </div>
+      <div class="capture-card" data-animate>
+        <div class="capture-icon">📋</div>
+        <h3>Your calls take their own notes</h3>
+        <p>Connect Fathom, Google Meet, or Microsoft Teams once. Every recorded meeting becomes structured notes on its own — nothing to upload, nothing to forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="scenario">
-            <div class="msg-user">What's still open from last week?</div>
-            <div class="msg-reply">Three things: <strong>follow up with David</strong> on the proposal, <strong>send Priya the revised contract</strong>, and review the Q3 numbers Asha sent Thursday.</div>
-          </div>
 
+<!-- FEATURE ROWS -->
+<section class="features-lt">
+  <div class="container">
+    <div class="feature-rows">
+
+      <!-- Total recall -->
+      <div class="feature-row">
+        <div class="feature-copy" data-animate>
+          <span class="sticker blue">Total recall</span>
+          <h3>Ask like you'd ask a chief of staff.</h3>
+          <p class="feature-sub"><span class="q">"What did we agree with Acme last quarter?"</span><br><br>Dori answers from everything you've ever captured — meetings, voice notes, files, decisions — and links back to the exact source.</p>
+          <p class="feature-line">Search runs locally on your Mac, across thousands of items, in plain language. <strong>You never tagged or filed any of it.</strong></p>
         </div>
-        <div class="scenario-dots">
-          <button class="scenario-dot active" data-idx="0"></button>
-          <button class="scenario-dot" data-idx="1"></button>
-          <button class="scenario-dot" data-idx="2"></button>
-          <button class="scenario-dot" data-idx="3"></button>
+        <div class="feature-visual" data-shot>
+          <span class="doodle tl">🔍</span>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <img src="images/ask-anything.webp" width="1600" height="900" loading="lazy" alt="Dori's command palette answering a search across 2,643 items in the vault" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Meetings -->
+      <div class="feature-row flip">
+        <div class="feature-copy" data-animate>
+          <span class="sticker green">Meeting notes</span>
+          <h3>Every call becomes a record of what was decided.</h3>
+          <p class="feature-sub">Summary, decisions, and follow-ups — extracted from the transcript automatically, and linked to every person who was in the room.</p>
+          <p class="feature-line">Six months later, <strong>"what did Sarah confirm about SSO?"</strong> has an answer with a source.</p>
+        </div>
+        <div class="feature-visual" data-shot data-shot-flip>
+          <span class="doodle br">✍️</span>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <img src="images/meeting-notes.webp" width="1600" height="1000" loading="lazy" alt="A meeting recording turned into structured notes with an executive summary and key decisions" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Prepared -->
+      <div class="feature-row">
+        <div class="feature-copy" data-animate>
+          <span class="sticker purple">Projects &amp; relationships</span>
+          <h3>Walk in already briefed.</h3>
+          <p class="feature-sub">Every client, project, and person keeps a running timeline — what was said, what was decided, what's still open. Opening the page <em class="serif-pop">is</em> the prep.</p>
+          <p class="feature-line">People link to accounts, accounts link to projects, projects link to meetings. <strong>The picture assembles itself.</strong></p>
+        </div>
+        <div class="feature-visual" data-shot>
+          <span class="doodle tl">🧵</span>
+          <div class="shot">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <img src="images/project-timeline.webp" width="1600" height="1000" loading="lazy" alt="A project page in Dori showing an activity timeline of file changes and linked meetings" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- COUNCIL -->
+<section class="council">
+  <div class="container">
+    <div class="council-grid">
+      <div class="council-copy" data-animate>
+        <span class="sticker on-navy">Council</span>
+        <h3>A second opinion, <span class="serif-pop">before</span> it leaves the building.</h3>
+        <p class="feature-sub">A panel of built-in advisors stress-tests your work — argument, factual accuracy, tone, risk — each one seeing what the last one missed. Run one, or run the sequence.</p>
+        <p class="feature-line">The review a trusted partner would give your proposal — on demand, before the client sees it.</p>
+      </div>
+      <div class="feature-visual" data-shot data-shot-flip>
+        <span class="doodle br">🧐</span>
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i></div>
+          <img src="images/council.webp" width="1600" height="1000" loading="lazy" alt="Dori's council of advisor personas: argument reviewer, fact auditor, tone stylist, and risk auditor" />
         </div>
       </div>
     </div>
@@ -687,104 +730,51 @@
 </section>
 
 
-<!-- DIFM -->
-<section class="difm">
-  <div class="difm-inner" style="text-align:center;padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,3rem);">
-    <h2 class="t-h1 reveal" style="color:#fff;">It's not the work.<br>It's everything before it.</h2>
-    <p class="reveal delay-1" style="margin-top:1.25rem;color:rgba(255,255,255,0.58);font-size:1.05rem;line-height:1.6;max-width:440px;margin-left:auto;margin-right:auto;">Let Dori handle the boring parts.<br>You focus on what matters.</p>
-  </div>
-</section>
-
-<!-- ARC -->
-<section class="arc">
-  <div class="arc-inner">
-    <div class="arc-head reveal">
-      <p class="t-label">A different kind of day</p>
-      <h2 class="t-h1" style="color:var(--navy);margin-top:.75rem;">Delegate boring.</h2>
-      <p style="margin-top:.875rem;">Fire it in. Forget about it. Dori does the rest.</p>
-    </div>
-    <div class="arc-stages">
-      <div class="arc-stage reveal">
-        <div class="arc-stage-copy">
-          <h3>Fire and (don't) forget.</h3>
-          <p>Voice note on a walk. A WhatsApp forward. A file dropped in a folder. It goes in. Dori picks it up. You move on — without tagging, filing, or thinking about it again.</p>
-        </div>
-        <div class="arc-stage-visual">🎙️</div>
+<!-- FRUGAL -->
+<section class="frugal">
+  <div class="container">
+    <div class="frugal-grid">
+      <div class="frugal-copy" data-animate>
+        <span class="sticker amber">Frugal by design</span>
+        <h3>Most of what Dori does costs <span class="serif-pop">nothing</span> to run.</h3>
+        <p class="feature-sub">Dumping 100-page files into a cloud chatbot on every question is lazy engineering. Dori transcribes, reads, indexes, files, and searches locally on your Mac — and saves the AI model for the moments that actually need judgment.</p>
+        <p class="feature-line">Repetitive work becomes deterministic rules that run as plain code. <strong>Intelligence fires only where it earns its keep.</strong></p>
       </div>
-      <div class="arc-stage reveal delay-1">
-        <div class="arc-stage-copy">
-          <h3>Dori figures out the rest.</h3>
-          <p>It reads what you sent, identifies the project, the people involved, and connects it to everything it already knows. You never file anything. It just knows.</p>
-        </div>
-        <div class="arc-stage-visual">🧠</div>
-      </div>
-      <div class="arc-stage reveal">
-        <div class="arc-stage-copy">
-          <h3>Everything waiting when you need it.</h3>
-          <p>Before a meeting, before a task, before a conversation — the context is already assembled. The brief is ready. You walk in prepared without preparing.</p>
-        </div>
-        <div class="arc-stage-visual">⚡</div>
-      </div>
-      <div class="arc-stage reveal delay-1">
-        <div class="arc-stage-copy">
-          <h3>Ask. Get the full picture.</h3>
-          <p>Three months ago, you made a decision. Ask in plain language. Dori finds it instantly — with full context and exactly where it came from.</p>
-        </div>
-        <div class="arc-stage-visual">🔍</div>
-      </div>
-      <div class="arc-stage reveal">
-        <div class="arc-stage-copy">
-          <h3>Say what you need. Dori drafts it.</h3>
-          <p>Proposals, briefs, updates — assembled from your actual context, not a blank page. Edit what needs changing. Approve. Send.</p>
-        </div>
-        <div class="arc-stage-visual">📄</div>
-      </div>
-      <div class="arc-stage reveal delay-1">
-        <div class="arc-stage-copy">
-          <h3>For all of you, not just work.</h3>
-          <p>Work vault, family vault, whatever else matters. Mom's medical records next to your project notes — each world completely separate, each one building its own memory.</p>
-        </div>
-        <div class="arc-stage-visual">🏡</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- DAILY BRIEF -->
-<section class="daily-brief">
-  <div class="daily-brief-inner reveal">
-    <span class="daily-brief-label">Close the day. Actually rest.</span>
-    <p class="daily-brief-sub">The brief catches what you'd otherwise lie awake worrying about.</p>
-    <div class="db-card">
-      <div class="db-greeting">Good morning — here's what's open today</div>
-      <div class="db-items">
-        <div class="db-item">
-          <div class="db-item-icon">📋</div>
-          <div class="db-item-body">
-            <div class="db-item-text"><strong>Follow up with David</strong> on the proposal — from your Tuesday meeting notes.</div>
-            <div class="db-item-meta">Open for 3 days · tagged: proposal, david</div>
+      <div class="receipt-wrap" data-shot>
+        <div class="receipt" role="img" aria-label="A receipt showing Dori's everyday work — transcription, reading, search, filing — all costing zero dollars">
+          <div class="receipt-head">
+            <div class="rc-title">★ DORI ★</div>
+            <div class="rc-sub">A TUESDAY, ITEMISED</div>
           </div>
-        </div>
-        <div class="db-item">
-          <div class="db-item-icon">📄</div>
-          <div class="db-item-body">
-            <div class="db-item-text"><strong>Priya is waiting on the revised contract</strong> — you committed to this in August.</div>
-            <div class="db-item-meta">Still open · from your August call notes</div>
+          <div class="receipt-items">
+            <div class="receipt-row">
+              <span class="rc-item">Transcribe 4 voice notes<span class="rc-note">on-device Whisper</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Read 80-page client PDF<span class="rc-note">converted &amp; indexed locally</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Search 2,643 vault items<span class="rc-note">SQLite FTS5, on your CPU</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">File 37 captures by rule<span class="rc-note">deterministic — no model call</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Draft proposal for Rajan<span class="rc-note">your existing AI subscription</span></span>
+              <span class="rc-price">$0.00*</span>
+            </div>
           </div>
-        </div>
-        <div class="db-item">
-          <div class="db-item-icon">🎓</div>
-          <div class="db-item-body">
-            <div class="db-item-text"><strong>Arjun's maths worksheet is due today</strong> — from the photo you forwarded Monday.</div>
-            <div class="db-item-meta">Personal vault · school</div>
+          <div class="receipt-total">
+            <span>EXTRA API FEES</span>
+            <span class="rc-price">$0.00</span>
           </div>
-        </div>
-        <div class="db-item">
-          <div class="db-item-icon">📞</div>
-          <div class="db-item-body">
-            <div class="db-item-text"><strong>Call with Rajan at 3pm</strong> — background and last conversation ready when you are.</div>
-            <div class="db-item-meta">Context prepared · 2 open items from last call</div>
+          <div class="receipt-foot">
+            *RUNS ON THE CLAUDE OR CHATGPT<br>PLAN YOU ALREADY PAY FOR
+            <div class="receipt-barcode"></div>
           </div>
         </div>
       </div>
@@ -793,167 +783,63 @@
 </section>
 
 
-<!-- IT LEARNS -->
-<section class="compound">
-  <div class="compound-grid">
-    <div class="compound-copy reveal">
-      <p class="t-label" style="color:var(--muted);margin-bottom:.75rem;">It gets better over time</p>
-      <h2 class="t-h1" style="color:var(--navy);margin-bottom:1rem;">The longer you use it,<br>the less you have to prepare.</h2>
-      <p>The first week, it catches your notes and files. By the second month, it knows your projects and the people in them — who matters, what's open, what you tend to let slide.</p>
-      <p>By the end of the year, it knows your patterns better than you remember them yourself. Every session makes the next one richer. That's not automation. That's a working relationship.</p>
+<!-- SUPPLEMENTS -->
+<section class="supp">
+  <div class="container">
+    <div class="supp-head" data-animate>
+      <span class="sticker purple">Not another chatbot</span>
+      <h2 class="t-h1">Keeps your Claude.<br>Makes it <span class="serif-pop">smarter.</span></h2>
+      <p>Dori doesn't replace Claude, Codex, or Gemini — it's the memory underneath them. Everything it knows is available wherever you already work.</p>
     </div>
-    <div class="reveal delay-1">
-      <div class="timeline">
-        <div class="tl-header">Your operational memory · growing</div>
-        <div class="tl-row">
-          <div class="tl-dot amber"></div>
-          <div>
-            <div class="tl-date">Day 1</div>
-            <div class="tl-text">Q2 strategy call — decided to pause expansion, focus on retention</div>
-            <div class="tl-tags"><span class="tl-tag amber">strategy</span><span class="tl-tag">q2</span></div>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-dot blue"></div>
-          <div>
-            <div class="tl-date">Week 2</div>
-            <div class="tl-text">Voice note: Rajan mentioned churn risk in enterprise — auto-linked to Q2 decision</div>
-            <div class="tl-tags"><span class="tl-tag">rajan</span><span class="tl-tag">churn</span><span class="tl-tag">linked</span></div>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-dot green"></div>
-          <div>
-            <div class="tl-date">Month 2</div>
-            <div class="tl-text">Retention playbook drafted — connected to Q2 call, Rajan note, and 3 related files</div>
-            <div class="tl-tags"><span class="tl-tag">proposal</span><span class="tl-tag">auto-assembled</span></div>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-dot purple"></div>
-          <div>
-            <div class="tl-date">Month 4</div>
-            <div class="tl-text">Board prep: Dori assembles the full thread. You show up ready.</div>
-            <div class="tl-tags"><span class="tl-tag amber">4 months of context</span></div>
-          </div>
-        </div>
-        <div class="tl-divider"></div>
-        <div class="tl-footer">
-          <div class="tl-footer-dot"></div>
-          <span>247 connected items · still growing</span>
-          <span class="tl-count">↑ getting richer</span>
-        </div>
+    <div class="supp-grid">
+      <div class="supp-card" data-animate>
+        <span class="supp-icon">🧠</span>
+        <h3>Bring the AI you already pay for</h3>
+        <p>Connect your existing Claude or ChatGPT plan and Dori routes the heavy thinking there. No new subscription, no surprise API bill.</p>
+      </div>
+      <div class="supp-card" data-animate>
+        <span class="supp-icon">🔌</span>
+        <h3>Your memory, inside your tools</h3>
+        <p>Over MCP, Claude Code and Cursor can query your Dori memory directly — and Dori can call your external tools in return. Two-way, open standard.</p>
+      </div>
+      <div class="supp-card" data-animate>
+        <span class="supp-icon">📧</span>
+        <h3>Reads only the email you permit</h3>
+        <p>Label a message <code>DORI</code> in Gmail and it's captured into the vault. Everything else in your inbox is never touched.</p>
+      </div>
+      <div class="supp-card" data-animate>
+        <span class="supp-icon">🎒</span>
+        <h3>Hand context to any model</h3>
+        <p>A handoff bundles the relevant files and your instruction into a portable pack any AI can pick up — no re-explaining the background from scratch.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- VAULTS -->
-<section class="vaults">
-  <div class="vaults-inner">
-    <div class="vaults-head reveal">
-      <p class="t-label">Separate contexts</p>
-      <h2 class="t-h1" style="color:var(--navy);margin-top:.75rem;">Your whole life, organised.<br>Each part in its own place.</h2>
-      <p style="margin-top:.875rem;">Your work doesn't need to know about your family. Your personal life doesn't need board presentations bleeding in. Dori keeps each world cleanly separate — each one accumulating its own memory. Switch between them the way you switch between hats.</p>
+<!-- OWNERSHIP -->
+<section class="own">
+  <div class="container">
+    <div class="own-head" data-animate>
+      <span class="sticker coral">Yours, permanently</span>
+      <h2 class="t-h1">Plain files on your Mac.<br>Yours <span class="serif-pop">forever.</span></h2>
+      <p>Your entire memory lives as readable Markdown files you own — not in a vendor's database. Claude today, something better tomorrow: the context travels with you.</p>
     </div>
-    <div class="vault-grid">
-      <div class="vault-card reveal">
-        <span class="vault-icon">💼</span>
-        <h3>Work</h3>
-        <p>Meetings, decisions, projects, people — the full picture of how you operate. Everything connected so you always know where things stand.</p>
-        <div class="vault-tags">
-          <span class="vault-tag">projects</span>
-          <span class="vault-tag">decisions</span>
-          <span class="vault-tag">follow-ups</span>
-          <span class="vault-tag">proposals</span>
-          <span class="vault-tag">people</span>
-        </div>
+    <div class="own-grid">
+      <div class="own-card" data-animate>
+        <span class="own-icon">🔒</span>
+        <h3>Private by design</h3>
+        <p>Your notes, clients, and decisions stay on your machine. Dori never trains on your data — and every action it takes is logged in an audit trail you can inspect.</p>
       </div>
-      <div class="vault-card featured reveal delay-1">
-        <span class="vault-icon">🏡</span>
-        <h3>Personal</h3>
-        <p>The things that matter most deserve the safest place. Mom's medical reports, your son's teacher's name, tax records, insurance docs — stored privately on your device, recalled in a sentence. Nobody else's cloud. Nobody else's servers.</p>
-        <div class="vault-tags">
-          <span class="vault-tag">medical</span>
-          <span class="vault-tag">family</span>
-          <span class="vault-tag">finances</span>
-          <span class="vault-tag">school</span>
-          <span class="vault-tag">private</span>
-        </div>
+      <div class="own-card" data-animate>
+        <span class="own-icon">🎛️</span>
+        <h3>You stay in charge</h3>
+        <p>Nothing becomes automatic without your say-so. Learned rules wait for your approval, and the audit trail shows every read, write, and send — so trust is verified, not assumed.</p>
       </div>
-      <div class="vault-card reveal delay-2">
-        <span class="vault-icon">✦</span>
-        <h3>Whatever matters</h3>
-        <p>A startup idea you're building on the side. A research thread you keep coming back to. A passion project, a new venture, a life chapter. Any context gets its own vault — completely separate, accumulating its own memory.</p>
-        <div class="vault-tags">
-          <span class="vault-tag">any context</span>
-          <span class="vault-tag">fully separate</span>
-          <span class="vault-tag">same assistant</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- CREATE & SHARE -->
-<section class="create">
-  <div class="create-inner">
-    <div class="create-head reveal">
-      <p class="t-label">Create &amp; share</p>
-      <h2 class="t-h1" style="color:#fff;margin-top:.75rem;">When it's time to produce something,<br>Dori has already done the research.</h2>
-      <p style="margin-top:.875rem;">You've been capturing and building context for weeks. When you need a proposal, a brief, a client update, or a report — you don't start from a blank page. You give the direction. Dori assembles from everything it knows.</p>
-    </div>
-
-    <div class="create-flow reveal delay-1">
-      <div class="create-step">
-        <span class="create-step-num">Step 1</span>
-        <h4>Give a direction</h4>
-        <p>Tell Dori what you need in plain language — a proposal, a summary, a brief. No template. No structure needed.</p>
-      </div>
-      <div class="create-arrow">→</div>
-      <div class="create-step">
-        <span class="create-step-num">Step 2</span>
-        <h4>Dori assembles it</h4>
-        <p>It pulls from calls, notes, WhatsApp threads, files — everything relevant — and drafts a complete document with sources shown.</p>
-      </div>
-      <div class="create-arrow">→</div>
-      <div class="create-step">
-        <span class="create-step-num">Step 3</span>
-        <h4>You edit, approve, share</h4>
-        <p>Review the draft, make changes, and send directly — without switching to another tool or copy-pasting a thing.</p>
-      </div>
-    </div>
-
-    <div class="create-example reveal delay-2">
-      <span class="create-example-label">Example — live in Dori</span>
-      <div class="create-prompt">
-        <div class="create-prompt-bubble">Draft a proposal for Rajan based on our Q2 call and the churn conversation from last week.</div>
-      </div>
-      <div class="create-sources">
-        <span class="create-sources-label">Drawing from</span>
-        <span class="create-source"><span class="create-source-dot"></span>Q2 strategy call · Oct 4</span>
-        <span class="create-source"><span class="create-source-dot"></span>Rajan voice note · Oct 11</span>
-        <span class="create-source"><span class="create-source-dot"></span>Retention playbook draft</span>
-        <span class="create-source"><span class="create-source-dot"></span>Enterprise churn thread</span>
-      </div>
-      <div class="create-doc">
-        <div class="create-doc-title">Retention Proposal — Rajan / Enterprise</div>
-        <div class="create-doc-lines">
-          <div class="create-doc-line long"></div>
-          <div class="create-doc-line med"></div>
-          <div class="create-doc-line long"></div>
-          <div class="create-doc-line short"></div>
-          <div class="create-doc-line med"></div>
-          <div class="create-doc-line long"></div>
-          <div class="create-doc-line med"></div>
-        </div>
-        <div class="create-doc-actions">
-          <button class="create-doc-btn primary">Approve &amp; send</button>
-          <button class="create-doc-btn secondary">Edit draft</button>
-          <button class="create-doc-btn secondary">Regenerate</button>
-        </div>
+      <div class="own-card" data-animate>
+        <span class="own-icon">🌐</span>
+        <h3>No lock-in, ever</h3>
+        <p>If you stop using Dori tomorrow, you lose nothing. Every file stays on your drive in plain text — a compounding asset that outlives any model, and any vendor. Including us.</p>
       </div>
     </div>
   </div>
@@ -962,189 +848,30 @@
 
 <!-- WHO IT'S FOR -->
 <section class="personas" id="personas">
-  <div class="persona-head reveal">
-    <p class="t-label">Who it's for</p>
-    <h2 class="t-h1" style="margin-top:.75rem;">Built for people who carry a lot.</h2>
-    <p style="margin-top:.875rem;">If your work is complex, your context is scattered, and your brain is spending too much time filing — Dori is for you.</p>
-  </div>
-  <div class="persona-grid">
-    <div class="persona-card reveal">
-      <div class="persona-icon">🚀</div>
-      <h3>Founders</h3>
-      <span class="persona-role">CEO · Co-founder · Operator</span>
-      <p>You're running a company inside your head. The investor call from Tuesday, the product decision made on a walk, the open thread with your co-founder — scattered across notes, WhatsApp, and memory. Dori holds the whole picture so you can focus on what's next.</p>
+  <div class="container">
+    <div class="persona-head" data-animate>
+      <span class="sticker amber">Who it's for</span>
+      <h2 class="t-h1">Built for people who carry a lot.</h2>
+      <p>If your work is a web of relationships, promises, and threads — Dori is the memory underneath it.</p>
     </div>
-    <div class="persona-card reveal delay-1">
-      <div class="persona-icon">🏢</div>
-      <h3>Business Leaders</h3>
-      <span class="persona-role">CXO · VP · Chief of Staff</span>
-      <p>You walk into ten meetings a week. Dori walks in ready — with everything said last time, everything still open, and the full context to ask the right question at the right moment. No prep time. No gaps.</p>
-    </div>
-    <div class="persona-card reveal delay-2">
-      <div class="persona-icon">📰</div>
-      <h3>Journalists & Researchers</h3>
-      <span class="persona-role">Writers · Researchers · Editors</span>
-      <p>Months of interviews, sources, and observations — structurally connected, not buried in notebooks. Pull a story brief from everything you've gathered, not just what you happened to remember to write down.</p>
-    </div>
-    <div class="persona-card reveal delay-3">
-      <div class="persona-icon">🎯</div>
-      <h3>Consultants & Advisors</h3>
-      <span class="persona-role">Consultants · Analysts · Advisors</span>
-      <p>Each client is a world of context. Dori keeps them separate — each one accumulating its own memory — so you always know where you are, whatever hat you're wearing that day.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- PRINCIPLES -->
-<section class="principles">
-  <div class="principles-inner">
-    <div class="principles-head reveal">
-      <p class="t-label">Designed differently</p>
-      <h2 class="t-h1" style="color:var(--navy);margin-top:.75rem;">Built on principles,<br>not just features.</h2>
-      <p style="margin-top:.875rem;">Three decisions we made before we wrote a line of code — and that we'll never walk back.</p>
-    </div>
-    <div class="principles-grid">
-      <div class="principle-card reveal">
-        <span class="principle-icon">🔒</span>
-        <h3>Private by design</h3>
-        <p>Your data is stored in files you own and control — not locked inside a vendor's database. Dori never trains on it, sells it, or accesses it without your knowledge. Whatever hosting option you choose, that guarantee never changes.</p>
+    <div class="persona-grid">
+      <div class="persona-card" data-animate>
+        <div class="persona-icon">🚀</div>
+        <h3>Founders</h3>
+        <span class="persona-role">CEO · Co-founder · Operator</span>
+        <p>You're running the company inside your head — the investor call, the product decision made on a walk, the open thread with your co-founder. Dori holds the whole picture so you can focus on what's next.</p>
       </div>
-      <div class="principle-card reveal delay-1">
-        <span class="principle-icon">💰</span>
-        <h3>Affordable by design</h3>
-        <p>Most of what Dori does — filing, connecting, organising — happens automatically without an expensive AI call. Intelligence fires only when you need it, keeping costs low by design.</p>
+      <div class="persona-card" data-animate>
+        <div class="persona-icon">🎯</div>
+        <h3>Consultants &amp; Advisors</h3>
+        <span class="persona-role">Consultants · Analysts · Advisors</span>
+        <p>Each client is a world of context. Dori keeps every one separate and current — commitments, commercial terms, history — so you always know exactly where you left off, whichever hat you're wearing today.</p>
       </div>
-      <div class="principle-card reveal delay-2">
-        <span class="principle-icon">🌐</span>
-        <h3>Open by design</h3>
-        <p>Use Claude today, switch to something better tomorrow — your entire accumulated context travels with you. Plain files, any model, no lock-in. That's the whole point.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- FEATURES -->
-<section class="features">
-  <div class="section-head reveal">
-    <p class="t-label">What your assistant does</p>
-    <h2 class="t-h1" style="margin-top:.75rem;">Everything it does for you.</h2>
-    <p style="margin-top:.875rem;">Every task that used to fall on you — captured, connected, organised, and ready — without you lifting a finger.</p>
-  </div>
-  <div class="feat-scroll-outer">
-    <div class="feat-scroll-wrap reveal" id="featScroll">
-      <div class="feat-scroll">
-        <div class="feat-card">
-          <div class="feat-card-visual">🎙️</div>
-          <div class="feat-card-body">
-            <h4>Voice & WhatsApp</h4>
-            <p>Voice note on the go, forward on WhatsApp — transcribed, tagged, and connected. No editing, no app-switching.</p>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-visual">📁</div>
-          <div class="feat-card-body">
-            <h4>Folder watching</h4>
-            <p>Point it at your Downloads or any folder. Files land there, Dori reads and files them — automatically, every time.</p>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-visual">📋</div>
-          <div class="feat-card-body">
-            <h4>Meeting notes</h4>
-            <p>Recordings become structured notes. Decisions, tasks, follow-ups — extracted and linked to the right people.</p>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-visual">🔍</div>
-          <div class="feat-card-body">
-            <h4>Ask anything</h4>
-            <p>Three months ago, you made a decision. Ask in plain language — Dori finds it instantly, with full context.</p>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-visual">👥</div>
-          <div class="feat-card-body">
-            <h4>People layer</h4>
-            <p>Everyone you work with — their history, open threads, follow-ups — in one place, always current.</p>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-card-visual">📄</div>
-          <div class="feat-card-body">
-            <h4>Create & share</h4>
-            <p>Proposals, briefs, updates — drafted from your context, not a blank page. Edit, approve, send.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="feat-hint">← swipe to explore →</p>
-  </div>
-</section>
-
-
-<!-- COMPARISON -->
-<section class="compare">
-  <div class="compare-inner">
-    <div class="compare-head reveal">
-      <p class="t-label" style="color:var(--muted);margin-bottom:.75rem;">How Dori is different</p>
-      <h2 class="t-h1" style="color:var(--navy);margin-bottom:.75rem;">Not a replacement. An upgrade.</h2>
-      <p>Dori doesn't replace Claude or ChatGPT — it gives them the one thing they're missing: memory that persists.</p>
-    </div>
-    <div class="reveal delay-1">
-      <div class="comp-table-wrap">
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th style="width:36%">Capability</th>
-              <th>AI alone</th>
-              <th class="hi">AI + Dori</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="feat">Remembers past decisions</td>
-              <td><span class="partial">~</span> In-app memory only, not portable</td>
-              <td class="hi"><span class="check">✓</span> Permanent, searchable, portable</td>
-            </tr>
-            <tr>
-              <td class="feat">Knows your projects & people</td>
-              <td><span class="partial">~</span> Learns, but won't follow you elsewhere</td>
-              <td class="hi"><span class="check">✓</span> Always in context, across any model</td>
-            </tr>
-            <tr>
-              <td class="feat">Works when you switch models</td>
-              <td><span class="cross">✗</span> New model, zero context</td>
-              <td class="hi"><span class="check">✓</span> Context travels with you</td>
-            </tr>
-            <tr>
-              <td class="feat">Structured knowledge extraction</td>
-              <td><span class="cross">✗</span> Raw chat history only</td>
-              <td class="hi"><span class="check">✓</span> Decisions, people, projects — linked</td>
-            </tr>
-            <tr>
-              <td class="feat">Captures from voice, WhatsApp, files</td>
-              <td><span class="cross">✗</span> Chat interface only</td>
-              <td class="hi"><span class="check">✓</span> Any surface, any device</td>
-            </tr>
-            <tr>
-              <td class="feat">Gets richer over time</td>
-              <td><span class="cross">✗</span> History accumulates, context stays flat</td>
-              <td class="hi"><span class="check">✓</span> Richer with every session</td>
-            </tr>
-            <tr>
-              <td class="feat">Data ownership</td>
-              <td><span class="cross">✗</span> Vendor servers, no real export</td>
-              <td class="hi"><span class="check">✓</span> Your files, your control</td>
-            </tr>
-            <tr>
-              <td class="feat">Model flexibility</td>
-              <td><span class="cross">✗</span> Tied to one provider</td>
-              <td class="hi"><span class="check">✓</span> Open format, any model</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="persona-card" data-animate>
+        <div class="persona-icon">🏢</div>
+        <h3>Business Leaders</h3>
+        <span class="persona-role">CXO · VP · Chief of Staff</span>
+        <p>Ten meetings a week, each with its own history. Dori walks in ready — what was said last time, what's still open, and the context to ask the right question at the right moment.</p>
       </div>
     </div>
   </div>
@@ -1153,24 +880,24 @@
 
 <!-- EARLY ACCESS -->
 <section class="pricing" id="pricing">
-  <div class="pricing-head reveal">
-    <p class="t-label">Early access</p>
-    <h2 class="t-h1" style="margin-top:.75rem;">Now in early access.</h2>
-    <p style="margin-top:.875rem;">Dori is live and accepting early users. Simple to get started — join now and help shape what it becomes.</p>
-  </div>
-  <div style="max-width:640px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);">
-    <div class="price-card featured reveal" style="text-align:center;">
+  <div class="container">
+    <div class="pricing-head" data-animate>
+      <span class="sticker green">Early access</span>
+      <h2 class="t-h1">Now in early access.</h2>
+      <p>Dori is live and onboarding early users in small batches. Join now and help shape what it becomes.</p>
+    </div>
+    <div class="price-card" data-animate>
       <span class="price-tier">Early access</span>
-      <h3 style="font-size:1.5rem;margin-bottom:0.5rem;">Free to start</h3>
-      <p style="color:rgba(255,255,255,0.52);font-size:0.95rem;line-height:1.65;margin-bottom:1.75rem;">Get access to the full Dori experience — vault, capture, AI assistant, folder watching, WhatsApp, and more. Pricing for hosted and managed options will be announced at launch.</p>
-      <ul class="price-features" style="text-align:left;margin-bottom:1.75rem;">
-        <li><span class="pi">✓</span> Full vault & capture</li>
-        <li><span class="pi">✓</span> AI assistant with your context</li>
-        <li><span class="pi">✓</span> Voice, WhatsApp & folder capture</li>
-        <li><span class="pi">✓</span> Meeting notes, people layer, studio</li>
-        <li><span class="pi">✓</span> Memory that's yours, not a vendor's</li>
+      <h3>Free to start</h3>
+      <p>The full Dori experience on your Mac — capture, memory, meeting notes, and the assistant itself. Pricing for hosted and managed options will be announced at launch.</p>
+      <ul class="price-features">
+        <li><span class="pi">✓</span> Capture by WhatsApp, voice note, or watched folder</li>
+        <li><span class="pi">✓</span> Meeting notes from Fathom, Google Meet &amp; Teams</li>
+        <li><span class="pi">✓</span> Ask-anything memory across everything you've captured</li>
+        <li><span class="pi">✓</span> Projects, people &amp; client accounts, linked automatically</li>
+        <li><span class="pi">✓</span> Your vault in plain Markdown — works with any AI model</li>
       </ul>
-      <a href="#waitlist" class="price-cta price-cta-amber" data-waitlist-trigger="true" style="font-size:1rem;padding:0.875rem;">Get early access →</a>
+      <a href="#waitlist" class="price-cta" data-waitlist-trigger="true">Get early access →</a>
     </div>
   </div>
 </section>
@@ -1178,34 +905,36 @@
 
 <!-- FAQ -->
 <section class="faq">
-  <div class="faq-head reveal">
-    <p class="t-label">Questions</p>
-    <h2 class="t-h2" style="color:var(--navy);margin-top:.75rem;">Frequently asked</h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item reveal">
-      <div class="faq-q">Is this really like having an executive assistant? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">That's exactly how to think about it. A great EA remembers your preferences, knows your projects and the people in them, organises your chaos, and shows up ready with context when you need it. Dori does all of this — automatically, privately, and without the overhead of managing another person. The difference is Dori gets better the more you use it, works 24/7, and costs almost nothing to run.</div>
+  <div class="container">
+    <div class="faq-head" data-animate>
+      <span class="sticker blue">Questions</span>
+      <h2 class="t-h2">Frequently asked</h2>
     </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Do I need to be technical to use Dori? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">Not at all. Setup takes about ten minutes. If you can use Google Docs, you can use Dori. We're building the setup to be as simple as possible — and a full how-it-works guide is coming soon for anyone who wants to go deeper.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Who can see my data? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">Nobody but you. Your vault is stored in files you own and control — not locked inside a vendor's database. Dori never trains on your data, sells it, or accesses it without your knowledge. Whatever hosting option you choose, that guarantee never changes. And if Dori disappeared tomorrow, your files are yours in plain, readable format — complete and accessible forever.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Does Dori replace my AI subscription? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">No — Dori makes your AI subscriptions dramatically more useful. Think of it as the memory layer your Claude, ChatGPT, or Gemini is missing. Dori passes your accumulated context to whichever model you use, so every session starts with the full picture instead of a blank slate.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">What if I want to switch AI models? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">Just change one setting. Your entire operational memory — notes, people, threads, decisions — travels to the new model instantly. The context is stored as plain files, not inside any AI provider's systems. Switch freely, any time.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">How is this different from Notion AI or ChatGPT memory? <span class="faq-chevron">▾</span></div>
-      <div class="faq-a">Notion AI works on documents but doesn't compound across time or connect conversations, voice notes, and WhatsApp messages. ChatGPT memory is limited, vendor-controlled, and disappears if you switch models or plans. Dori gives you an open, growing, structurally-linked memory that works with any model — including ones that don't exist yet.</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Is this really like having an executive assistant? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">That's exactly how to think about it. A great EA remembers your preferences, knows your projects and the people in them, organises your chaos, and shows up ready with context when you need it. Dori does all of this — automatically, privately, and without the overhead of managing another person. The difference is Dori gets better the more you use it, works 24/7, and costs almost nothing to run.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to be technical to use Dori? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">Not at all. Setup takes about ten minutes. If you can use Google Docs, you can use Dori. And the <a href="https://help.mydori.app" target="_blank" rel="noopener">help center</a> walks through everything — from your first capture to connecting meeting sources.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who can see my data? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">Nobody but you. Your vault is stored in files you own and control — not locked inside a vendor's database. Dori never trains on your data, sells it, or accesses it without your knowledge. And if Dori disappeared tomorrow, your files are yours in plain, readable format — complete and accessible forever.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does Dori replace my AI subscription? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">No — Dori makes the subscription you already have dramatically more useful. Think of it as the memory layer your Claude, ChatGPT, or Gemini is missing. Dori passes your accumulated context to whichever model you use, so every session starts with the full picture instead of a blank slate — at $0 in extra API fees.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I want to switch AI models? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">Just change one setting. Your entire operational memory — notes, people, threads, decisions — is stored as plain files, not inside any AI provider's systems. Switch freely, any time, and the new model starts with everything the old one knew.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How is this different from Notion AI or ChatGPT memory? <span class="faq-chevron">▾</span></div>
+        <div class="faq-a">Notion AI works on documents but doesn't connect conversations, voice notes, meetings, and WhatsApp messages into one memory. ChatGPT memory is limited, vendor-controlled, and disappears if you switch models or plans. Dori gives you an open, growing, structurally-linked memory that works with any model — including ones that don't exist yet.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1213,10 +942,10 @@
 
 <!-- CTA -->
 <section class="ctaband">
-  <div class="ctaband-inner reveal">
-    <p class="t-label">Start today</p>
-    <h2 class="t-h1" style="margin-top:.75rem;">Be the calmer version<br>of <em>yourself.</em></h2>
-    <p class="sub" style="margin-top:1rem;">Dori holds the context, tracks the threads, and makes sure nothing slips. Give it a week — and the day will feel different.</p>
+  <div class="ctaband-inner" data-animate>
+    <span class="sticker on-navy">Start today</span>
+    <h2 class="t-h1">Be the <span class="serif-pop">calmer</span> version of yourself.</h2>
+    <p class="sub">Dori holds the context, tracks the threads, and makes sure nothing slips. Give it a week — the day will feel different.</p>
     <div class="ctaband-btns">
       <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
       <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
@@ -1247,14 +976,14 @@
     <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
     <div class="modal-badge">✨ Priority Early Access</div>
     <h2 class="modal-title">Get early access to Dori</h2>
-    <p class="modal-desc">Join the executives, consultants, and advisors testing local-first, token-conscious AI intelligence. Enter your email for priority invite access.</p>
+    <p class="modal-desc">Join the founders, consultants, and business leaders already using Dori as their memory. We onboard in small batches — enter your email to reserve your spot.</p>
 
     <form id="waitlist-form" class="modal-form">
       <div class="modal-input-wrap">
         <input type="email" id="waitlist-email" placeholder="name@company.com" required autocomplete="email" />
       </div>
       <button type="submit" id="waitlist-submit-btn" class="btn btn-amber modal-btn">
-        <span>Join Waitlist →</span>
+        <span>Request access →</span>
       </button>
       <div id="waitlist-error" class="modal-error"></div>
     </form>
@@ -1262,13 +991,30 @@
     <div id="waitlist-success" class="modal-success" style="display:none;">
       <div class="success-icon">✓</div>
       <h3>You're on the list!</h3>
-      <p>We've reserved your spot and sent a welcome email to your inbox.</p>
+      <p>We've reserved your spot and sent a welcome email with what to expect next.</p>
+      <div class="modal-share">
+        <p>Know someone drowning in threads? Spots open in batches — bring a colleague.</p>
+        <div class="modal-share-btns">
+          <a class="modal-share-btn" id="share-whatsapp" target="_blank" rel="noopener"
+             href="https://wa.me/?text=I%20just%20signed%20up%20for%20early%20access%20to%20Dori%20%E2%80%94%20an%20AI%20executive%20assistant%20that%20remembers%20every%20meeting%2C%20client%2C%20and%20promise.%20Thought%20of%20you%3A%20https%3A%2F%2Fnuul.live">
+            Share on WhatsApp
+          </a>
+          <button type="button" class="modal-share-btn" id="share-copy">Copy link</button>
+        </div>
+      </div>
     </div>
 
     <p class="modal-footer-note">🔒 Zero spam. Read our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
   </div>
 </div>
 
+<!-- TODO(growth): no analytics on this page. Add Cloudflare Web Analytics
+     (dashboard → Analytics → Web Analytics → add site, paste beacon <script> here).
+     Cookie-free, no consent banner needed. Without it we can't measure
+     visit → modal-open → submit conversion. -->
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
   // Hamburger nav
   const toggle = document.getElementById('nav-toggle');
@@ -1278,37 +1024,75 @@
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
   }
 
-  // Scenario carousel
-  const scenarios = document.querySelectorAll('.scenario');
-  const dots = document.querySelectorAll('.scenario-dot');
-  let current = 0;
-  let timer;
+  // Marquee: duplicate content for a seamless CSS-free GSAP loop
+  const marquee = document.getElementById('marquee');
+  if (marquee) marquee.innerHTML += marquee.innerHTML;
 
-  function goTo(idx) {
-    scenarios[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = idx;
-    scenarios[current].classList.add('active');
-    dots[current].classList.add('active');
+  // ─── GSAP motion (degrades gracefully: content is fully visible without it) ───
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.gsap && !reduceMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    gsap.from('.hero-badge, .hero h1, .hero-sub, .hero-ctas, .hero-note', {
+      y: 28, opacity: 0, duration: 0.9, stagger: 0.09, ease: 'power3.out'
+    });
+    gsap.from('#hero-shot', { y: 90, opacity: 0, duration: 1.1, delay: 0.35, ease: 'power3.out' });
+
+    // Floating capture chips: drift forever, parallax on scroll
+    document.querySelectorAll('.chip').forEach((chip, i) => {
+      gsap.from(chip, { scale: 0, opacity: 0, duration: 0.6, delay: 0.5 + i * 0.1, ease: 'back.out(2)' });
+      gsap.to(chip, {
+        y: (i % 2 ? 14 : -14), duration: 2.4 + i * 0.3,
+        repeat: -1, yoyo: true, ease: 'sine.inOut'
+      });
+      gsap.to(chip, {
+        yPercent: 60 + i * 25, opacity: 0,
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 40%', scrub: true }
+      });
+    });
+
+    // Rotating word in headline
+    const words = ['a promise.', 'a client.', 'a decision.', 'a follow-up.', 'a name.', 'a thing.'];
+    const swap = document.getElementById('swap-word');
+    let wi = 0;
+    setInterval(() => {
+      gsap.to(swap, { y: -16, opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
+        wi = (wi + 1) % words.length;
+        swap.textContent = words[wi];
+        gsap.fromTo(swap, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' });
+      }});
+    }, 2600);
+
+    // Marquee loop
+    gsap.to('#marquee', { xPercent: -50, duration: 22, repeat: -1, ease: 'none' });
+
+    // Copy blocks + cards: rise in
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      gsap.from(el, {
+        y: 36, opacity: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 84%' }
+      });
+    });
+
+    // Screenshots: tilt in and settle straight
+    document.querySelectorAll('[data-shot]').forEach(el => {
+      const dir = el.hasAttribute('data-shot-flip') ? -1 : 1;
+      gsap.from(el, {
+        y: 70, opacity: 0, rotation: 4 * dir, scale: 0.96,
+        duration: 0.95, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 82%' }
+      });
+    });
+
+    // Stickers: pop
+    document.querySelectorAll('.sticker').forEach(el => {
+      gsap.from(el, {
+        scale: 0, rotation: -14, duration: 0.55, ease: 'back.out(2.5)',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
   }
-
-  function next() { goTo((current + 1) % scenarios.length); }
-
-  function startTimer() { timer = setInterval(next, 4500); }
-  function resetTimer() { clearInterval(timer); startTimer(); }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => { goTo(+dot.dataset.idx); resetTimer(); });
-  });
-
-  startTimer();
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => io.observe(el));
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
@@ -1319,28 +1103,6 @@
       if (!isOpen) item.classList.add('open');
     });
   });
-
-  // Drag-to-scroll for feature cards
-  const featScroll = document.getElementById('featScroll');
-  if (featScroll) {
-    let isDown = false, startX, scrollLeft;
-    featScroll.addEventListener('mousedown', e => {
-      isDown = true;
-      featScroll.classList.add('is-dragging');
-      startX = e.pageX - featScroll.offsetLeft;
-      scrollLeft = featScroll.scrollLeft;
-    });
-    document.addEventListener('mouseup', () => {
-      isDown = false;
-      featScroll.classList.remove('is-dragging');
-    });
-    featScroll.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - featScroll.offsetLeft;
-      featScroll.scrollLeft = scrollLeft - (x - startX) * 1.2;
-    });
-  }
 
   // Early Access Waitlist Modal logic
   const modalBackdrop = document.getElementById('waitlist-modal');
@@ -1378,6 +1140,20 @@
     });
   }
 
+  // Copy-link share button
+  const shareCopy = document.getElementById('share-copy');
+  if (shareCopy) {
+    shareCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('https://nuul.live');
+        shareCopy.textContent = 'Copied ✓';
+        setTimeout(() => { shareCopy.textContent = 'Copy link'; }, 2000);
+      } catch (_) {
+        shareCopy.textContent = 'nuul.live';
+      }
+    });
+  }
+
   // Handle Form Submit
   if (waitlistForm) {
     waitlistForm.addEventListener('submit', async (e) => {
@@ -1405,14 +1181,14 @@
           waitlistError.textContent = data.error || 'Failed to submit. Please try again.';
           waitlistError.style.display = 'block';
           waitlistSubmitBtn.disabled = false;
-          waitlistSubmitBtn.querySelector('span').textContent = 'Join Waitlist →';
+          waitlistSubmitBtn.querySelector('span').textContent = 'Request access →';
         }
       } catch (err) {
         console.error('Waitlist submission error:', err);
         waitlistError.textContent = 'Network error. Please try again.';
         waitlistError.style.display = 'block';
         waitlistSubmitBtn.disabled = false;
-        waitlistSubmitBtn.querySelector('span').textContent = 'Join Waitlist →';
+        waitlistSubmitBtn.querySelector('span').textContent = 'Request access →';
       }
     });
   }
