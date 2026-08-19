@@ -210,7 +210,6 @@
       font-family: var(--font-display); font-weight: 750; font-size: 0.72rem;
       letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 0.25rem;
     }
-    .scrap-top .em { font-size: 0.95rem; }
     .scrap-body { color: #3c4557; }
     .scrap-wave { display: flex; align-items: flex-end; gap: 2.5px; height: 16px; margin-top: 0.3rem; }
     .scrap-wave i { width: 3px; border-radius: 2px; background: #2a9c5c; }
@@ -263,7 +262,6 @@
       border-radius: var(--r-lg); padding: 1.9rem 2rem;
       backdrop-filter: blur(4px);
     }
-    .day-card .day-emoji { font-size: 1.9rem; display: inline-block; transform: rotate(-6deg); margin-bottom: 0.8rem; }
     .day-card h3 { font-size: clamp(1.25rem, 2.2vw, 1.7rem); font-weight: 740; color: #fff; letter-spacing: -0.015em; margin-bottom: 0.6rem; }
     .day-card p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
     .day-card p .hl { color: var(--amber-soft); font-weight: 600; }
@@ -323,14 +321,6 @@
     }
     .capture-card:hover { transform: translateY(-6px) rotate(-0.6deg); box-shadow: 0 18px 44px -12px rgba(26,31,78,0.2); border-color: rgba(240,168,14,0.6); }
     .capture-card:nth-child(2):hover { transform: translateY(-6px) rotate(0.6deg); }
-    .capture-icon {
-      width: 52px; height: 52px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.3rem; transform: rotate(-4deg);
-    }
-    .capture-card:nth-child(1) .capture-icon { background: rgba(90,209,138,0.16); border: 2px solid rgba(90,209,138,0.5); }
-    .capture-card:nth-child(2) .capture-icon { background: rgba(240,120,90,0.14); border: 2px solid rgba(240,120,90,0.45); }
-    .capture-card:nth-child(3) .capture-icon { background: rgba(124,158,240,0.16); border: 2px solid rgba(124,158,240,0.5); }
     .capture-card h3 { font-size: 1.18rem; font-weight: 730; color: var(--navy); margin-bottom: 0.55rem; letter-spacing: -0.01em; }
     .capture-card p { font-size: 0.93rem; color: var(--body); line-height: 1.65; }
 
@@ -358,12 +348,6 @@
       color: var(--navy); font-weight: 600; transform: rotate(-1deg);
     }
     .feature-visual { position: relative; }
-    .feature-visual .doodle {
-      position: absolute; z-index: 2; font-size: 1.9rem;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
-    }
-    .doodle.tl { top: -1.1rem; left: -0.9rem; transform: rotate(-12deg); }
-    .doodle.br { bottom: -1.1rem; right: -0.7rem; transform: rotate(10deg); }
 
     /* ─── Council (navy) ─── */
     .council { background: var(--navy); padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; overflow: hidden; }
@@ -441,7 +425,6 @@
     }
     .supp-card:hover { transform: translateY(-5px) rotate(-0.4deg); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); border-color: rgba(240,168,14,0.55); }
     .supp-card:nth-child(even):hover { transform: translateY(-5px) rotate(0.4deg); }
-    .supp-icon { font-size: 1.6rem; margin-bottom: 1rem; display: inline-block; transform: rotate(-5deg); }
     .supp-card h3 { font-size: 1.1rem; font-weight: 730; color: var(--navy); margin-bottom: 0.5rem; }
     .supp-card p { font-size: 0.91rem; color: var(--body); line-height: 1.66; }
     .supp-card p code {
@@ -463,7 +446,6 @@
       padding: 2.1rem 1.8rem; transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .own-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); }
-    .own-icon { font-size: 1.8rem; margin-bottom: 1.1rem; display: inline-block; transform: rotate(-6deg); }
     .own-card h3 { font-size: 1.12rem; font-weight: 730; color: var(--navy); margin-bottom: 0.55rem; }
     .own-card p { font-size: 0.91rem; color: var(--body); line-height: 1.68; }
 
@@ -480,12 +462,6 @@
     }
     .persona-card:hover { transform: translateY(-5px) rotate(0.5deg); box-shadow: 0 16px 40px -12px rgba(26,31,78,0.18); }
     .persona-card:nth-child(2):hover { transform: translateY(-5px) rotate(-0.5deg); }
-    .persona-icon {
-      width: 52px; height: 52px; border-radius: 16px; background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.25rem; transform: rotate(-5deg);
-      box-shadow: 3px 3px 0 var(--amber);
-    }
     .persona-card h3 { font-size: 1.12rem; font-weight: 730; color: var(--navy); margin-bottom: 0.3rem; }
     .persona-role { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-bottom: 0.875rem; display: block; }
     .persona-card p { font-size: 0.91rem; color: var(--body); line-height: 1.65; }
@@ -637,37 +613,37 @@
   <!-- scattered work scraps: your actual mess, converging into the app on scroll -->
   <div class="scrap scrap-voice">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">🎙️</span> Voice note · 0:15</div>
+      <div class="scrap-top">Voice note · 0:15</div>
       <div class="scrap-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
   <div class="scrap scrap-wa">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">💬</span> WhatsApp</div>
+      <div class="scrap-top">WhatsApp</div>
       <div class="scrap-body">fwd: contract v3 — "can you look before Thu?"</div>
     </div>
   </div>
   <div class="scrap scrap-note">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">🤝</span> Promised</div>
+      <div class="scrap-top">Promised</div>
       <div class="scrap-body">"I'll send the revised terms by Friday"</div>
     </div>
   </div>
   <div class="scrap scrap-pdf">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">📄</span> Downloads</div>
+      <div class="scrap-top">Downloads</div>
       <div class="scrap-body">Q3-financial-report.pdf · 80 pages</div>
     </div>
   </div>
   <div class="scrap scrap-meet">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">📅</span> 9:15 today</div>
+      <div class="scrap-top">9:15 today</div>
       <div class="scrap-body">Call w/ Sarah — renewal + SSO clause</div>
     </div>
   </div>
   <div class="scrap scrap-mail">
     <div class="scrap-inner">
-      <div class="scrap-top"><span class="em">✉️</span> Gmail · DORI</div>
+      <div class="scrap-top">Gmail · DORI</div>
       <div class="scrap-body">RE: Q3 numbers — Asha, Thursday</div>
     </div>
   </div>
@@ -722,17 +698,14 @@
     </div>
     <div class="capture-grid">
       <div class="capture-card" data-animate>
-        <div class="capture-icon">🎙️</div>
         <h3>Say it on WhatsApp</h3>
         <p>Message Dori like a colleague. A 15-second voice note on the walk between meetings is transcribed, tagged, and linked to the right client before you're back at your desk.</p>
       </div>
       <div class="capture-card" data-animate>
-        <div class="capture-icon">📁</div>
         <h3>Drop the file, walk away</h3>
         <p>Point Dori at Downloads, Desktop, or any folder. A client sends an 80-page report — you save it, Dori reads it, files it, and connects it to the account it belongs to.</p>
       </div>
       <div class="capture-card" data-animate>
-        <div class="capture-icon">📋</div>
         <h3>Your calls take their own notes</h3>
         <p>Connect Fathom, Google Meet, or Microsoft Teams once. Every recorded meeting becomes structured notes on its own — nothing to upload, nothing to forward.</p>
       </div>
@@ -754,7 +727,6 @@
         <div class="day-moment">
           <div class="day-time">8:45<small>walk in briefed</small></div>
           <div class="day-card">
-            <span class="day-emoji">☕</span>
             <h3>Open the client page. That's the prep.</h3>
             <p>Six months of decisions, commitments, and open items — <span class="hl">assembled before your coffee cools</span>. No tab-scrambling, no "what did we agree again?"</p>
           </div>
@@ -763,7 +735,6 @@
         <div class="day-moment">
           <div class="day-time">9:15<small>the call</small></div>
           <div class="day-card">
-            <span class="day-emoji">🎧</span>
             <h3>The call takes its own notes.</h3>
             <p>You give the room 100% of your attention. Dori transcribes on-device and files the <span class="hl">decisions, follow-ups, and who owns what</span> — before you're out of the meeting.</p>
           </div>
@@ -772,7 +743,6 @@
         <div class="day-moment">
           <div class="day-time">11:30<small>between meetings</small></div>
           <div class="day-card">
-            <span class="day-emoji">🚶</span>
             <h3>An idea hits mid-walk.</h3>
             <p>Fifteen seconds into WhatsApp: <span class="hl">"lead with the phased rollout model."</span> Transcribed, recognised, filed under the right proposal — before you're back at your desk.</p>
           </div>
@@ -781,7 +751,6 @@
         <div class="day-moment">
           <div class="day-time">2:15<small>the pdf</small></div>
           <div class="day-card">
-            <span class="day-emoji">📄</span>
             <h3>An 80-page report lands.</h3>
             <p>You drag it into Downloads and move on. Dori reads and indexes it locally — ask about Q4 margins later and <span class="hl">get the exact table, at $0 in API fees</span>.</p>
           </div>
@@ -790,7 +759,6 @@
         <div class="day-moment">
           <div class="day-time">4:00<small>the proposal</small></div>
           <div class="day-card">
-            <span class="day-emoji">✍️</span>
             <h3>The proposal writes its first draft.</h3>
             <p>"Draft the expansion proposal from this morning's call and my voice note." It arrives <span class="hl">grounded in your actual context, in your voice</span> — you edit instead of starting.</p>
           </div>
@@ -799,7 +767,6 @@
         <div class="day-moment">
           <div class="day-time">6:00<small>log off</small></div>
           <div class="day-card">
-            <span class="day-emoji">🌆</span>
             <h3>Close the laptop. Actually done.</h3>
             <p>Every commitment tracked, every note filed, every thread where it belongs. <span class="hl">Nothing lying awake with you tonight.</span></p>
           </div>
@@ -828,7 +795,6 @@
           <p class="feature-line">Search runs locally on your Mac, across thousands of items, in plain language. <strong>You never tagged or filed any of it.</strong></p>
         </div>
         <div class="feature-visual" data-shot>
-          <span class="doodle tl">🔍</span>
           <div class="shot">
             <div class="shot-bar"><i></i><i></i><i></i></div>
             <img src="images/ask-anything.webp" width="1600" height="900" loading="lazy" alt="Dori's command palette answering a search across 2,643 items in the vault" />
@@ -845,7 +811,6 @@
           <p class="feature-line">Six months later, <strong>"what did Sarah confirm about SSO?"</strong> has an answer with a source.</p>
         </div>
         <div class="feature-visual" data-shot data-shot-flip>
-          <span class="doodle br">✍️</span>
           <div class="shot">
             <div class="shot-bar"><i></i><i></i><i></i></div>
             <img src="images/meeting-notes.webp" width="1600" height="1000" loading="lazy" alt="A meeting recording turned into structured notes with an executive summary and key decisions" />
@@ -862,7 +827,6 @@
           <p class="feature-line">People link to accounts, accounts link to projects, projects link to meetings. <strong>The picture assembles itself.</strong></p>
         </div>
         <div class="feature-visual" data-shot>
-          <span class="doodle tl">🧵</span>
           <div class="shot">
             <div class="shot-bar"><i></i><i></i><i></i></div>
             <img src="images/project-timeline.webp" width="1600" height="1000" loading="lazy" alt="A project page in Dori showing an activity timeline of file changes and linked meetings" />
@@ -886,7 +850,6 @@
         <p class="feature-line">The review a trusted partner would give your proposal — on demand, before the client sees it.</p>
       </div>
       <div class="feature-visual" data-shot data-shot-flip>
-        <span class="doodle br">🧐</span>
         <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i></div>
           <img src="images/council.webp" width="1600" height="1000" loading="lazy" alt="Dori's council of advisor personas: argument reviewer, fact auditor, tone stylist, and risk auditor" />
@@ -960,22 +923,18 @@
     </div>
     <div class="supp-grid">
       <div class="supp-card" data-animate>
-        <span class="supp-icon">🧠</span>
         <h3>Bring the AI you already pay for</h3>
         <p>Connect your existing Claude or ChatGPT plan and Dori routes the heavy thinking there. No new subscription, no surprise API bill.</p>
       </div>
       <div class="supp-card" data-animate>
-        <span class="supp-icon">🔌</span>
         <h3>Your memory, inside your tools</h3>
         <p>Over MCP, Claude Code and Cursor can query your Dori memory directly — and Dori can call your external tools in return. Two-way, open standard.</p>
       </div>
       <div class="supp-card" data-animate>
-        <span class="supp-icon">📧</span>
         <h3>Reads only the email you permit</h3>
         <p>Label a message <code>DORI</code> in Gmail and it's captured into the vault. Everything else in your inbox is never touched.</p>
       </div>
       <div class="supp-card" data-animate>
-        <span class="supp-icon">🎒</span>
         <h3>Hand context to any model</h3>
         <p>A handoff bundles the relevant files and your instruction into a portable pack any AI can pick up — no re-explaining the background from scratch.</p>
       </div>
@@ -994,17 +953,14 @@
     </div>
     <div class="own-grid">
       <div class="own-card" data-animate>
-        <span class="own-icon">🔒</span>
         <h3>Private by design</h3>
         <p>Your notes, clients, and decisions stay on your machine. Dori never trains on your data — and every action it takes is logged in an audit trail you can inspect.</p>
       </div>
       <div class="own-card" data-animate>
-        <span class="own-icon">🎛️</span>
         <h3>You stay in charge</h3>
         <p>Nothing becomes automatic without your say-so. Learned rules wait for your approval, and the audit trail shows every read, write, and send — so trust is verified, not assumed.</p>
       </div>
       <div class="own-card" data-animate>
-        <span class="own-icon">🌐</span>
         <h3>No lock-in, ever</h3>
         <p>If you stop using Dori tomorrow, you lose nothing. Every file stays on your drive in plain text — a compounding asset that outlives any model, and any vendor. Including us.</p>
       </div>
@@ -1023,19 +979,16 @@
     </div>
     <div class="persona-grid">
       <div class="persona-card" data-animate>
-        <div class="persona-icon">🚀</div>
         <h3>Founders</h3>
         <span class="persona-role">CEO · Co-founder · Operator</span>
         <p>You're running the company inside your head — the investor call, the product decision made on a walk, the open thread with your co-founder. Dori holds the whole picture so you can focus on what's next.</p>
       </div>
       <div class="persona-card" data-animate>
-        <div class="persona-icon">🎯</div>
         <h3>Consultants &amp; Advisors</h3>
         <span class="persona-role">Consultants · Analysts · Advisors</span>
         <p>Each client is a world of context. Dori keeps every one separate and current — commitments, commercial terms, history — so you always know exactly where you left off, whichever hat you're wearing today.</p>
       </div>
       <div class="persona-card" data-animate>
-        <div class="persona-icon">🏢</div>
         <h3>Business Leaders</h3>
         <span class="persona-role">CXO · VP · Chief of Staff</span>
         <p>Ten meetings a week, each with its own history. Dori walks in ready — what was said last time, what's still open, and the context to ask the right question at the right moment.</p>
@@ -1141,7 +1094,7 @@
 <div id="waitlist-modal" class="modal-backdrop">
   <div class="modal-card">
     <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
-    <div class="modal-badge">✨ Priority Early Access</div>
+    <div class="modal-badge">Priority Early Access</div>
     <h2 class="modal-title">Get early access to Dori</h2>
     <p class="modal-desc">Join the founders, consultants, and business leaders already using Dori as their memory. We onboard in small batches — enter your email to reserve your spot.</p>
 
@@ -1171,7 +1124,7 @@
       </div>
     </div>
 
-    <p class="modal-footer-note">🔒 Zero spam. Read our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    <p class="modal-footer-note">Zero spam. Read our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
   </div>
 </div>
 
