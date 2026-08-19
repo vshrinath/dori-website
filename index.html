@@ -196,26 +196,90 @@
     .hero-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; justify-content: center; }
     .hero-note { margin-top: 1.4rem; font-size: 0.84rem; color: rgba(255,255,255,0.38); }
 
-    /* floating capture chips */
-    .chip {
-      position: absolute; z-index: 1;
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.55rem 1rem; border-radius: 100px;
-      font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
-      color: #fff; white-space: nowrap;
-      border: 1.5px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    /* scattered work scraps — converge into the app on scroll */
+    .scrap { position: absolute; z-index: 1; will-change: transform, opacity; }
+    .scrap-inner {
+      background: #fffdf8; color: var(--ink);
+      border-radius: 12px; padding: 0.7rem 0.9rem;
+      width: max-content; max-width: 200px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.22), 0 16px 36px -8px rgba(0,0,0,0.4);
+      font-size: 0.76rem; line-height: 1.4;
     }
-    .chip .em { font-size: 1.05rem; }
-    .chip-voice   { top: 19%; left: 6%;  transform: rotate(-7deg); border-color: rgba(90,209,138,0.55); }
-    .chip-wa      { top: 38%; left: 2.5%; transform: rotate(4deg);  border-color: rgba(124,158,240,0.55); }
-    .chip-pdf     { top: 22%; right: 5%; transform: rotate(6deg);  border-color: rgba(240,120,90,0.55); }
-    .chip-meet    { top: 42%; right: 3%; transform: rotate(-4deg); border-color: rgba(240,168,14,0.6); }
-    .chip-promise { top: 60%; left: 8%;  transform: rotate(3deg);  border-color: rgba(176,124,240,0.55); }
-    .chip-idea    { top: 63%; right: 8%; transform: rotate(-6deg); border-color: rgba(255,217,120,0.5); }
-    @media (max-width: 1080px) { .chip { display: none; } }
+    .scrap-top {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-display); font-weight: 750; font-size: 0.72rem;
+      letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 0.25rem;
+    }
+    .scrap-top .em { font-size: 0.95rem; }
+    .scrap-body { color: #3c4557; }
+    .scrap-wave { display: flex; align-items: flex-end; gap: 2.5px; height: 16px; margin-top: 0.3rem; }
+    .scrap-wave i { width: 3px; border-radius: 2px; background: #2a9c5c; }
+    .scrap-wave i:nth-child(odd) { height: 60%; } .scrap-wave i:nth-child(even) { height: 100%; }
+    .scrap-wave i:nth-child(3n) { height: 35%; }
+    .scrap-voice .scrap-top { color: #2a9c5c; }
+    .scrap-wa .scrap-top { color: #4a6dd8; }
+    .scrap-pdf .scrap-top { color: #d05436; }
+    .scrap-meet .scrap-top { color: #b57d00; }
+    .scrap-note .scrap-top { color: #8a54cc; }
+    .scrap-mail .scrap-top { color: #1a7f8a; }
+    .scrap-note .scrap-inner { background: #fff3c9; }
+    .scrap-voice { top: 17%; left: 5%;  transform: rotate(-7deg); }
+    .scrap-wa    { top: 44%; left: 2%;  transform: rotate(4deg); }
+    .scrap-note  { top: 66%; left: 8%;  transform: rotate(-3deg); }
+    .scrap-pdf   { top: 16%; right: 4%; transform: rotate(6deg); }
+    .scrap-meet  { top: 42%; right: 2.5%; transform: rotate(-4deg); }
+    .scrap-mail  { top: 66%; right: 7%; transform: rotate(5deg); }
+    @media (max-width: 1080px) { .scrap { display: none; } }
+
+    /* ─── A day with Dori (pinned scrolytelling) ─── */
+    .day { background: var(--navy-deep); position: relative; overflow: hidden; }
+    .day::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 20% 30%, rgba(240,168,14,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .day-pin { position: relative; z-index: 1; padding: clamp(4rem, 8vw, 6rem) 0; }
+    .day.is-pinned-section .day-pin {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+    }
+    .day-pin > .container { width: 100%; }
+    .day-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .day-head h2 { color: #fff; margin-top: 1rem; }
+    .day-head h2 .serif-pop { color: var(--amber); }
+    .day-stage { position: relative; max-width: 980px; margin: 0 auto; }
+    .day-moment {
+      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+      gap: clamp(1.5rem, 4vw, 4rem); align-items: center;
+    }
+    .day-time {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1;
+      color: var(--amber); letter-spacing: -0.03em;
+    }
+    .day-time small { display: block; font-size: 0.3em; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; margin-top: 0.4rem; text-transform: uppercase; }
+    .day-card {
+      background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.13);
+      border-radius: var(--r-lg); padding: 1.9rem 2rem;
+      backdrop-filter: blur(4px);
+    }
+    .day-card .day-emoji { font-size: 1.9rem; display: inline-block; transform: rotate(-6deg); margin-bottom: 0.8rem; }
+    .day-card h3 { font-size: clamp(1.25rem, 2.2vw, 1.7rem); font-weight: 740; color: #fff; letter-spacing: -0.015em; margin-bottom: 0.6rem; }
+    .day-card p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .day-card p .hl { color: var(--amber-soft); font-weight: 600; }
+    .day-progress { display: flex; gap: 0.5rem; justify-content: center; margin-top: clamp(2rem, 4vw, 3rem); }
+    .day-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: background 0.25s, transform 0.25s; }
+    .day-dot.on { background: var(--amber); transform: scale(1.25); }
+    /* stacked (mobile / no-JS / reduced-motion) layout: moments flow normally */
+    .day-stage:not(.is-pinned) .day-moment { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .day-stage:not(.is-pinned) + .day-progress { display: none; }
+    /* pinned layout: moments stack on top of each other */
+    .day-stage.is-pinned .day-moment { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+    .day-stage.is-pinned .day-moment:first-child { position: relative; }
+    @media (max-width: 720px) {
+      .day-moment { grid-template-columns: 1fr; gap: 1.25rem; }
+      .day-time { font-size: 2.6rem; }
+    }
 
     .hero-shot-wrap {
       position: relative; z-index: 2;
@@ -570,13 +634,43 @@
 
 <!-- HERO -->
 <section class="hero">
-  <!-- floating capture chips -->
-  <div class="chip chip-voice" data-float="1"><span class="em">🎙️</span> voice note, 0:15</div>
-  <div class="chip chip-wa" data-float="2"><span class="em">💬</span> WhatsApp forward</div>
-  <div class="chip chip-pdf" data-float="3"><span class="em">📄</span> 80-page-report.pdf</div>
-  <div class="chip chip-meet" data-float="4"><span class="em">📅</span> call w/ Sarah, 9:15</div>
-  <div class="chip chip-promise" data-float="5"><span class="em">🤝</span> "I'll send it Friday"</div>
-  <div class="chip chip-idea" data-float="6"><span class="em">💡</span> idea, mid-walk</div>
+  <!-- scattered work scraps: your actual mess, converging into the app on scroll -->
+  <div class="scrap scrap-voice">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">🎙️</span> Voice note · 0:15</div>
+      <div class="scrap-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <div class="scrap scrap-wa">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">💬</span> WhatsApp</div>
+      <div class="scrap-body">fwd: contract v3 — "can you look before Thu?"</div>
+    </div>
+  </div>
+  <div class="scrap scrap-note">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">🤝</span> Promised</div>
+      <div class="scrap-body">"I'll send the revised terms by Friday"</div>
+    </div>
+  </div>
+  <div class="scrap scrap-pdf">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">📄</span> Downloads</div>
+      <div class="scrap-body">Q3-financial-report.pdf · 80 pages</div>
+    </div>
+  </div>
+  <div class="scrap scrap-meet">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">📅</span> 9:15 today</div>
+      <div class="scrap-body">Call w/ Sarah — renewal + SSO clause</div>
+    </div>
+  </div>
+  <div class="scrap scrap-mail">
+    <div class="scrap-inner">
+      <div class="scrap-top"><span class="em">✉️</span> Gmail · DORI</div>
+      <div class="scrap-body">RE: Q3 numbers — Asha, Thursday</div>
+    </div>
+  </div>
 
   <div class="hero-inner">
     <div class="hero-badge">
@@ -641,6 +735,79 @@
         <div class="capture-icon">📋</div>
         <h3>Your calls take their own notes</h3>
         <p>Connect Fathom, Google Meet, or Microsoft Teams once. Every recorded meeting becomes structured notes on its own — nothing to upload, nothing to forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- A DAY WITH DORI -->
+<section class="day">
+  <div class="day-pin">
+    <div class="container">
+      <div class="day-head" data-animate>
+        <span class="sticker on-navy">One Tuesday, hour by hour</span>
+        <h2 class="t-h1">A day that <span class="serif-pop">carries itself.</span></h2>
+      </div>
+      <div class="day-stage" id="day-stage">
+
+        <div class="day-moment">
+          <div class="day-time">8:45<small>walk in briefed</small></div>
+          <div class="day-card">
+            <span class="day-emoji">☕</span>
+            <h3>Open the client page. That's the prep.</h3>
+            <p>Six months of decisions, commitments, and open items — <span class="hl">assembled before your coffee cools</span>. No tab-scrambling, no "what did we agree again?"</p>
+          </div>
+        </div>
+
+        <div class="day-moment">
+          <div class="day-time">9:15<small>the call</small></div>
+          <div class="day-card">
+            <span class="day-emoji">🎧</span>
+            <h3>The call takes its own notes.</h3>
+            <p>You give the room 100% of your attention. Dori transcribes on-device and files the <span class="hl">decisions, follow-ups, and who owns what</span> — before you're out of the meeting.</p>
+          </div>
+        </div>
+
+        <div class="day-moment">
+          <div class="day-time">11:30<small>between meetings</small></div>
+          <div class="day-card">
+            <span class="day-emoji">🚶</span>
+            <h3>An idea hits mid-walk.</h3>
+            <p>Fifteen seconds into WhatsApp: <span class="hl">"lead with the phased rollout model."</span> Transcribed, recognised, filed under the right proposal — before you're back at your desk.</p>
+          </div>
+        </div>
+
+        <div class="day-moment">
+          <div class="day-time">2:15<small>the pdf</small></div>
+          <div class="day-card">
+            <span class="day-emoji">📄</span>
+            <h3>An 80-page report lands.</h3>
+            <p>You drag it into Downloads and move on. Dori reads and indexes it locally — ask about Q4 margins later and <span class="hl">get the exact table, at $0 in API fees</span>.</p>
+          </div>
+        </div>
+
+        <div class="day-moment">
+          <div class="day-time">4:00<small>the proposal</small></div>
+          <div class="day-card">
+            <span class="day-emoji">✍️</span>
+            <h3>The proposal writes its first draft.</h3>
+            <p>"Draft the expansion proposal from this morning's call and my voice note." It arrives <span class="hl">grounded in your actual context, in your voice</span> — you edit instead of starting.</p>
+          </div>
+        </div>
+
+        <div class="day-moment">
+          <div class="day-time">6:00<small>log off</small></div>
+          <div class="day-card">
+            <span class="day-emoji">🌆</span>
+            <h3>Close the laptop. Actually done.</h3>
+            <p>Every commitment tracked, every note filed, every thread where it belongs. <span class="hl">Nothing lying awake with you tonight.</span></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="day-progress" id="day-progress" aria-hidden="true">
+        <span class="day-dot on"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span>
       </div>
     </div>
   </div>
@@ -1039,17 +1206,60 @@
     });
     gsap.from('#hero-shot', { y: 90, opacity: 0, duration: 1.1, delay: 0.35, ease: 'power3.out' });
 
-    // Floating capture chips: drift forever, parallax on scroll
-    document.querySelectorAll('.chip').forEach((chip, i) => {
-      gsap.from(chip, { scale: 0, opacity: 0, duration: 0.6, delay: 0.5 + i * 0.1, ease: 'back.out(2)' });
-      gsap.to(chip, {
-        y: (i % 2 ? 14 : -14), duration: 2.4 + i * 0.3,
+    // Scattered work scraps: drift in place, then converge into the app shot on scroll
+    const heroEl = document.querySelector('.hero');
+    const shotEl = document.querySelector('#hero-shot .shot');
+    // untransformed center of an element, relative to the hero
+    const centerIn = (el) => {
+      let x = el.offsetWidth / 2, y = el.offsetHeight / 2, n = el;
+      while (n && n !== heroEl) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      return { x, y };
+    };
+    document.querySelectorAll('.scrap').forEach((scrap, i) => {
+      const inner = scrap.querySelector('.scrap-inner');
+      gsap.from(inner, { scale: 0, opacity: 0, duration: 0.6, delay: 0.5 + i * 0.1, ease: 'back.out(2)' });
+      gsap.to(inner, {
+        y: (i % 2 ? 12 : -12), duration: 2.4 + i * 0.3,
         repeat: -1, yoyo: true, ease: 'sine.inOut'
       });
-      gsap.to(chip, {
-        yPercent: 60 + i * 25, opacity: 0,
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 40%', scrub: true }
+      gsap.to(scrap, {
+        x: () => centerIn(shotEl).x - centerIn(scrap).x,
+        y: () => centerIn(shotEl).y - centerIn(scrap).y,
+        scale: 0.15, autoAlpha: 0, rotation: (i % 2 ? 25 : -25),
+        ease: 'power1.in',
+        scrollTrigger: {
+          trigger: '.hero', start: 'top top', end: '55% top',
+          scrub: true, invalidateOnRefresh: true
+        }
       });
+    });
+
+    // A day with Dori: pinned scrolytelling (desktop only; stacked list elsewhere)
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 821px)', () => {
+      const stage = document.getElementById('day-stage');
+      const daySection = document.querySelector('.day');
+      const moments = gsap.utils.toArray('.day-moment');
+      const dots = gsap.utils.toArray('.day-dot');
+      stage.classList.add('is-pinned');
+      daySection.classList.add('is-pinned-section');
+      gsap.set(moments[0], { autoAlpha: 1 });
+      const setDot = (idx) => dots.forEach((d, j) => d.classList.toggle('on', j === idx));
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: daySection, pin: daySection, scrub: 0.6,
+          start: 'top top', end: () => '+=' + moments.length * 520
+        }
+      });
+      moments.forEach((m, i) => {
+        if (i === 0) return;
+        tl.to(moments[i - 1], { autoAlpha: 0, y: -34, duration: 0.45, ease: 'power2.in' }, i)
+          .fromTo(m, { autoAlpha: 0, y: 34 }, {
+            autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out',
+            onStart: () => setDot(i), onReverseComplete: () => setDot(i - 1)
+          }, i + 0.35);
+      });
+      return () => { stage.classList.remove('is-pinned'); daySection.classList.remove('is-pinned-section'); };
     });
 
     // Rotating word in headline
@@ -1057,6 +1267,7 @@
     const swap = document.getElementById('swap-word');
     let wi = 0;
     setInterval(() => {
+      if (document.hidden) return;
       gsap.to(swap, { y: -16, opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
         wi = (wi + 1) % words.length;
         swap.textContent = words[wi];
