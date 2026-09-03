@@ -85,7 +85,7 @@
     .sticker.blue  { color: #4160be; background: rgba(124,158,240,0.14); }
     .sticker.green { color: #207746; background: rgba(90,209,138,0.14); }
     .sticker.purple{ color: #7c4cb8; background: rgba(176,124,240,0.14); }
-    .sticker.coral { color: #b3482e; background: rgba(240,120,90,0.14); }
+    .sticker.coral { color: #aa442c; background: rgba(240,120,90,0.14); }
     .sticker.on-navy { color: var(--amber-soft); background: rgba(240,168,14,0.12); }
 
     /* Squiggle underline */
@@ -364,6 +364,9 @@
     .frugal-copy .feature-sub { font-size: 1.05rem; color: var(--body); line-height: 1.7; margin-bottom: 0.9rem; }
     .frugal-copy .feature-line { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
     .frugal-copy .feature-line strong { color: var(--navy); font-weight: 650; }
+    .statbig { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin: 0.25rem 0 0.6rem; }
+    .statbig b { font-family: var(--font-display); font-size: clamp(3.2rem, 7vw, 4.6rem); font-weight: 800; line-height: 0.92; letter-spacing: -0.045em; color: var(--navy); }
+    .statbig span { font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.35rem); font-weight: 700; color: var(--amber-soft); }
     .receipt-wrap { display: flex; justify-content: center; }
     .receipt {
       font-family: ui-monospace, "SF Mono", Menlo, monospace;
@@ -397,7 +400,7 @@
     .receipt-barcode { margin: 0.7rem auto 0; height: 26px; width: 60%; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 9px); opacity: 0.8; }
 
     /* ─── Supplements ─── */
-    .supp { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .supp { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
     .supp-head { max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
     .supp-head h2 { color: var(--navy); margin: 1rem 0; }
     .supp-head h2 .serif-pop { color: #b57d00; font-size: 1.1em; }
@@ -419,7 +422,7 @@
     }
 
     /* ─── Ownership ─── */
-    .own { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .own { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
     .own-head { max-width: 760px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
     .own-head h2 { color: var(--navy); margin: 1rem 0; }
     .own-head h2 .serif-pop { color: #b57d00; font-size: 1.1em; }
@@ -435,7 +438,7 @@
     .own-card p { font-size: 0.91rem; color: var(--body); line-height: 1.68; }
 
     /* ─── Personas ─── */
-    .personas { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .personas { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
     .persona-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
     .persona-head h2 { color: var(--navy); margin: 1rem 0 0.75rem; }
     .persona-head p { color: var(--body); font-size: 1.0625rem; max-width: 520px; margin: 0 auto; }
@@ -452,7 +455,7 @@
     .persona-card p { font-size: 0.91rem; color: var(--body); line-height: 1.65; }
 
     /* ─── Early access ─── */
-    .pricing { background: var(--canvas); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .pricing { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 8rem) 0; }
     .pricing-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
     .pricing-head h2 { color: var(--navy); margin: 1rem 0 0.75rem; }
     .pricing-head p { color: var(--body); font-size: 1.0625rem; max-width: 500px; margin: 0 auto; }
@@ -477,7 +480,7 @@
     .price-cta:hover { background: #eaa829; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,168,14,0.4); }
 
     /* ─── FAQ ─── */
-    .faq { background: var(--canvas2); padding: clamp(4.5rem, 9vw, 7rem) 0; }
+    .faq { background: var(--canvas); padding: clamp(4.5rem, 9vw, 7rem) 0; }
     .faq-head { text-align: center; margin-bottom: 2.5rem; }
     .faq-head h2 { color: var(--navy); margin-top: 1rem; }
     .faq-list { max-width: 780px; margin: 0 auto; }
@@ -761,6 +764,60 @@
 </section>
 
 
+<!-- FRUGAL -->
+<section class="frugal">
+  <div class="container">
+    <div class="frugal-grid">
+      <div class="frugal-copy" data-animate>
+        <span class="sticker amber">Frugal by design</span>
+        <h3>Most of what Dori does costs <span class="serif-pop">nothing</span> to run.</h3>
+        <p class="statbig"><b>95%</b><span>fewer tokens</span></p>
+        <p class="feature-sub">to find something or answer a question. Measured against a real working vault of about 2,800 files, not a demo folder.</p>
+        <p class="feature-line">Dori does the reading, filing and searching itself, and only calls the AI when a question genuinely needs one. <strong>Your subscription lasts longer, and there is no separate API bill.</strong></p>
+      </div>
+      <div class="receipt-wrap" data-shot>
+        <div class="receipt" role="img" aria-label="A receipt showing Dori's everyday work — transcription, reading, search, filing — all costing zero dollars">
+          <div class="receipt-head">
+            <div class="rc-title">★ DORI ★</div>
+            <div class="rc-sub">A TUESDAY, ITEMISED</div>
+          </div>
+          <div class="receipt-items">
+            <div class="receipt-row">
+              <span class="rc-item">Transcribe 4 voice notes<span class="rc-note">on-device Whisper</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Read 80-page client PDF<span class="rc-note">converted &amp; indexed locally</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Search 2,643 vault items<span class="rc-note">SQLite FTS5, on your CPU</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">File 37 captures by rule<span class="rc-note">deterministic — no model call</span></span>
+              <span class="rc-price">$0.00</span>
+            </div>
+            <div class="receipt-row">
+              <span class="rc-item">Draft proposal for Rajan<span class="rc-note">your existing AI subscription</span></span>
+              <span class="rc-price">$0.00*</span>
+            </div>
+          </div>
+          <div class="receipt-total">
+            <span>EXTRA API FEES</span>
+            <span class="rc-price">$0.00</span>
+          </div>
+          <div class="receipt-foot">
+            *RUNS ON THE CLAUDE OR CHATGPT<br>PLAN YOU ALREADY PAY FOR
+            <div class="receipt-barcode"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- FEATURE ROWS -->
 <section class="features-lt">
   <div class="container">
@@ -814,60 +871,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- COUNCIL -->
-<!-- FRUGAL -->
-<section class="frugal">
-  <div class="container">
-    <div class="frugal-grid">
-      <div class="frugal-copy" data-animate>
-        <span class="sticker amber">Frugal by design</span>
-        <h3>Most of what Dori does costs <span class="serif-pop">nothing</span> to run.</h3>
-        <p class="feature-sub">Dumping 100-page files into a cloud chatbot on every question is lazy engineering. Dori transcribes, reads, indexes, files, and searches locally on your Mac — and saves the AI model for the moments that actually need judgment.</p>
-        <p class="feature-line">Repetitive work becomes deterministic rules that run as plain code. <strong>Intelligence fires only where it earns its keep.</strong></p>
-      </div>
-      <div class="receipt-wrap" data-shot>
-        <div class="receipt" role="img" aria-label="A receipt showing Dori's everyday work — transcription, reading, search, filing — all costing zero dollars">
-          <div class="receipt-head">
-            <div class="rc-title">★ DORI ★</div>
-            <div class="rc-sub">A TUESDAY, ITEMISED</div>
-          </div>
-          <div class="receipt-items">
-            <div class="receipt-row">
-              <span class="rc-item">Transcribe 4 voice notes<span class="rc-note">on-device Whisper</span></span>
-              <span class="rc-price">$0.00</span>
-            </div>
-            <div class="receipt-row">
-              <span class="rc-item">Read 80-page client PDF<span class="rc-note">converted &amp; indexed locally</span></span>
-              <span class="rc-price">$0.00</span>
-            </div>
-            <div class="receipt-row">
-              <span class="rc-item">Search 2,643 vault items<span class="rc-note">SQLite FTS5, on your CPU</span></span>
-              <span class="rc-price">$0.00</span>
-            </div>
-            <div class="receipt-row">
-              <span class="rc-item">File 37 captures by rule<span class="rc-note">deterministic — no model call</span></span>
-              <span class="rc-price">$0.00</span>
-            </div>
-            <div class="receipt-row">
-              <span class="rc-item">Draft proposal for Rajan<span class="rc-note">your existing AI subscription</span></span>
-              <span class="rc-price">$0.00*</span>
-            </div>
-          </div>
-          <div class="receipt-total">
-            <span>EXTRA API FEES</span>
-            <span class="rc-price">$0.00</span>
-          </div>
-          <div class="receipt-foot">
-            *RUNS ON THE CLAUDE OR CHATGPT<br>PLAN YOU ALREADY PAY FOR
-            <div class="receipt-barcode"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
