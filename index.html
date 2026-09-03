@@ -242,46 +242,28 @@
       pointer-events: none;
     }
     .day-pin { position: relative; z-index: 1; padding: clamp(4rem, 8vw, 6rem) 0; }
-    .day.is-pinned-section .day-pin {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: clamp(2.5rem, 5vw, 4rem) 0;
-    }
     .day-pin > .container { width: 100%; }
-    .day-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .day-head { text-align: center; margin-bottom: clamp(2.25rem, 4.5vw, 3.25rem); }
     .day-head h2 { color: var(--navy); margin-top: 1rem; }
     .day-head h2 .serif-pop { color: var(--amber-deep); }
-    .day-stage { position: relative; max-width: 980px; margin: 0 auto; }
-    .day-moment {
-      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-      gap: clamp(1.5rem, 4vw, 4rem); align-items: center;
+    .day-list { max-width: 760px; margin: 0 auto; }
+    .beat {
+      display: grid; grid-template-columns: 5.25rem 1fr;
+      gap: clamp(1rem, 3vw, 2.25rem); align-items: baseline;
+      padding: clamp(1.15rem, 2.2vw, 1.7rem) 0; border-top: 1px solid var(--hair);
     }
-    .day-time {
+    .beat:last-child { border-bottom: 1px solid var(--hair); }
+    .beat-t {
       font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1;
-      color: var(--amber-deep); letter-spacing: -0.03em;
+      font-size: clamp(1.45rem, 2.6vw, 1.95rem); line-height: 1;
+      color: var(--amber-deep); letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
     }
-    .day-time small { display: block; font-size: 0.3em; font-weight: 700; color: var(--muted); letter-spacing: 0.12em; margin-top: 0.4rem; text-transform: uppercase; }
-    .day-card {
-      background: var(--raise); border: 1.5px solid var(--hair);
-      border-radius: var(--r-lg); padding: 1.9rem 2rem;
-      backdrop-filter: blur(4px);
+    .beat p {
+      font-size: clamp(1.05rem, 2vw, 1.35rem); font-weight: 500;
+      color: var(--navy); line-height: 1.35; letter-spacing: -0.012em;
     }
-    .day-card h3 { font-size: clamp(1.25rem, 2.2vw, 1.7rem); font-weight: 740; color: var(--navy); letter-spacing: -0.015em; margin-bottom: 0.6rem; }
-    .day-card p { font-size: 0.95rem; color: var(--body); line-height: 1.65; }
-    .day-card p .hl { color: var(--amber-soft); font-weight: 600; }
-    .day-progress { display: flex; gap: 0.5rem; justify-content: center; margin-top: clamp(2rem, 4vw, 3rem); }
-    .day-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--hair); transition: background 0.25s, transform 0.25s; }
-    .day-dot.on { background: var(--amber); transform: scale(1.25); }
-    /* stacked (mobile / no-JS / reduced-motion) layout: moments flow normally */
-    .day-stage:not(.is-pinned) .day-moment { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
-    .day-stage:not(.is-pinned) + .day-progress { display: none; }
-    /* pinned layout: moments stack on top of each other */
-    .day-stage.is-pinned .day-moment { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
-    .day-stage.is-pinned .day-moment:first-child { position: relative; }
-    @media (max-width: 720px) {
-      .day-moment { grid-template-columns: 1fr; gap: 1.25rem; }
-      .day-time { font-size: 2.6rem; }
-    }
+    @media (max-width: 560px) { .beat { grid-template-columns: 4rem 1fr; } }
 
     .hero-shot-wrap {
       position: relative; z-index: 2;
@@ -727,59 +709,12 @@
         <span class="sticker on-navy">One Tuesday, hour by hour</span>
         <h2 class="t-h1">A busy day that <span class="serif-pop">sorts itself.</span></h2>
       </div>
-      <div class="day-stage" id="day-stage">
-
-        <div class="day-moment">
-          <div class="day-time">8:45<small>walk in briefed</small></div>
-          <div class="day-card">
-            <h3>Open the client page. That's the prep.</h3>
-            <p>Six months of decisions, commitments, and open items — <span class="hl">assembled before your coffee cools</span>. No tab-scrambling, no "what did we agree again?"</p>
-          </div>
-        </div>
-
-        <div class="day-moment">
-          <div class="day-time">9:15<small>the call</small></div>
-          <div class="day-card">
-            <h3>The call takes its own notes.</h3>
-            <p>You give the room 100% of your attention. Dori transcribes on-device and files the <span class="hl">decisions, follow-ups, and who owns what</span> — before you're out of the meeting.</p>
-          </div>
-        </div>
-
-        <div class="day-moment">
-          <div class="day-time">11:30<small>between meetings</small></div>
-          <div class="day-card">
-            <h3>An idea hits mid-walk.</h3>
-            <p>Fifteen seconds into WhatsApp: <span class="hl">"lead with the phased rollout model."</span> Transcribed, recognised, filed under the right proposal — before you're back at your desk.</p>
-          </div>
-        </div>
-
-        <div class="day-moment">
-          <div class="day-time">2:15<small>the pdf</small></div>
-          <div class="day-card">
-            <h3>An 80-page report lands.</h3>
-            <p>You drag it into Downloads and move on. Dori reads and indexes it locally — ask about Q4 margins later and <span class="hl">get the exact table, at $0 in API fees</span>.</p>
-          </div>
-        </div>
-
-        <div class="day-moment">
-          <div class="day-time">4:00<small>the proposal</small></div>
-          <div class="day-card">
-            <h3>The proposal writes its first draft.</h3>
-            <p>"Draft the expansion proposal from this morning's call and my voice note." It arrives <span class="hl">grounded in your actual context, in your voice</span> — you edit instead of starting.</p>
-          </div>
-        </div>
-
-        <div class="day-moment">
-          <div class="day-time">6:00<small>log off</small></div>
-          <div class="day-card">
-            <h3>Close the laptop. Actually done.</h3>
-            <p>Every commitment tracked, every note filed, every thread where it belongs. <span class="hl">Nothing lying awake with you tonight.</span></p>
-          </div>
-        </div>
-
+      <div class="day-list">
+        <div class="beat"><span class="beat-t">8:45</span><p>Six months of decisions, already on the client page.</p></div>
+        <div class="beat"><span class="beat-t">9:15</span><p>The call files its own notes.</p></div>
+        <div class="beat"><span class="beat-t">4:00</span><p>The proposal has a first draft.</p></div>
+        <div class="beat"><span class="beat-t">6:00</span><p>Every commitment tracked. Nothing left open.</p></div>
       </div>
-      <div class="day-progress" id="day-progress" aria-hidden="true">
-        <span class="day-dot on"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span><span class="day-dot"></span>
       </div>
     </div>
   </div>
@@ -795,7 +730,7 @@
       <div class="feature-row">
         <div class="feature-copy" data-animate>
           <span class="sticker blue">Total recall</span>
-          <h3>Ask like you'd ask a chief of staff.</h3>
+          <h3>Ask, instead of hunting.</h3>
           <p class="feature-sub"><span class="q">"What did we agree with Acme last quarter?"</span><br><br>Dori answers from everything you've ever captured — meetings, voice notes, files, decisions — and links back to the exact source.</p>
           <p class="feature-line">Search runs locally on your Mac, across thousands of items, in plain language. <strong>You never tagged or filed any of it.</strong></p>
         </div>
@@ -1190,34 +1125,6 @@
           scrub: true, invalidateOnRefresh: true
         }
       });
-    });
-
-    // A day with Dori: pinned scrolytelling (desktop only; stacked list elsewhere)
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 821px)', () => {
-      const stage = document.getElementById('day-stage');
-      const daySection = document.querySelector('.day');
-      const moments = gsap.utils.toArray('.day-moment');
-      const dots = gsap.utils.toArray('.day-dot');
-      stage.classList.add('is-pinned');
-      daySection.classList.add('is-pinned-section');
-      gsap.set(moments[0], { autoAlpha: 1 });
-      const setDot = (idx) => dots.forEach((d, j) => d.classList.toggle('on', j === idx));
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: daySection, pin: daySection, scrub: 0.6,
-          start: 'top top', end: () => '+=' + moments.length * 520
-        }
-      });
-      moments.forEach((m, i) => {
-        if (i === 0) return;
-        tl.to(moments[i - 1], { autoAlpha: 0, y: -34, duration: 0.45, ease: 'power2.in' }, i)
-          .fromTo(m, { autoAlpha: 0, y: 34 }, {
-            autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out',
-            onStart: () => setDot(i), onReverseComplete: () => setDot(i - 1)
-          }, i + 0.35);
-      });
-      return () => { stage.classList.remove('is-pinned'); daySection.classList.remove('is-pinned-section'); };
     });
 
     // Rotating word in headline
