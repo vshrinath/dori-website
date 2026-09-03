@@ -197,7 +197,8 @@
     }
     .hero-sub strong { color: var(--navy); font-weight: 600; }
     .hero-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; justify-content: center; }
-    .hero-note { margin-top: 1.4rem; font-size: 0.84rem; color: var(--muted); }
+    .cta-soon { margin-top: 0.85rem; font-family: var(--font-display); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--amber-soft); }
+    .hero-note { margin-top: 0.9rem; font-size: 0.84rem; color: var(--muted); }
 
     /* scattered work scraps — converge into the app on scroll */
     .scrap { position: absolute; z-index: 1; will-change: transform, opacity; }
@@ -296,12 +297,13 @@
     /* ─── Marquee ─── */
     .marquee-band {
       background: var(--amber);
-      transform: rotate(-1.6deg) scale(1.02);
-      margin: -1.2rem 0 0; position: relative; z-index: 5;
+      margin: clamp(2.75rem, 5.5vw, 4.5rem) 0 clamp(0.5rem, 1vw, 1rem);
+      position: relative; z-index: 5;
       overflow: hidden; border: 2px solid var(--navy-deep);
       box-shadow: 0 6px 0 rgba(19,23,55,0.9);
     }
-    .marquee { display: flex; width: max-content; padding: 0.7rem 0; }
+    .marquee { display: flex; width: max-content; padding: 0.8rem 0; }
+    .marquee-band:hover { cursor: default; }
     .marquee span {
       font-family: var(--font-display); font-weight: 780; font-size: 1.02rem;
       color: var(--navy); letter-spacing: 0.01em;
@@ -603,7 +605,7 @@
       <li><a href="#waitlist" data-waitlist-trigger="true">Early access</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.75rem;">
-      <a href="#waitlist" class="btn btn-amber" data-waitlist-trigger="true">Get early access</a>
+      <a href="#waitlist" class="btn btn-amber" data-waitlist-trigger="true">Get Dori</a>
       <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -659,12 +661,12 @@
     </div>
     <h1 class="t-display">The assistant that never forgets<br><span class="swap-wrap"><span class="swap" id="swap-word">a promise.</span></span></h1>
     <p class="hero-sub">
-      Less to remember. Less to chase. Less to do. <strong>More room to think.</strong>
+      Less to remember. Less to chase. Less to do.<br><strong>More room to think.</strong>
     </p>
     <div class="hero-ctas">
-      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
-      <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
+      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get Dori →</a>
     </div>
+    <p class="cta-soon">Coming soon</p>
     <p class="hero-note">Works with the AI subscription you already have · Your data stays in files you own</p>
   </div>
   <div class="hero-shot-wrap" id="hero-shot">
@@ -696,7 +698,7 @@
   <div class="container">
     <div class="capture-head" data-animate>
       <span class="sticker amber">Step one — capture</span>
-      <h2 class="t-h1">Getting it in takes <span class="serif-pop">seconds.</span></h2>
+      <h2 class="t-h1">Getting work into Dori takes <span class="serif-pop">seconds.</span></h2>
       <p>No tagging. No filing. No "I'll write it up later." Dori meets you where the thought happens.</p>
     </div>
     <div class="capture-grid">
@@ -723,7 +725,7 @@
     <div class="container">
       <div class="day-head" data-animate>
         <span class="sticker on-navy">One Tuesday, hour by hour</span>
-        <h2 class="t-h1">A day that <span class="serif-pop">carries itself.</span></h2>
+        <h2 class="t-h1">A busy day that <span class="serif-pop">sorts itself.</span></h2>
       </div>
       <div class="day-stage" id="day-stage">
 
@@ -1020,7 +1022,7 @@
         <li><span class="pi">✓</span> Projects, people &amp; client accounts, linked automatically</li>
         <li><span class="pi">✓</span> Your vault in plain Markdown — works with any AI model</li>
       </ul>
-      <a href="#waitlist" class="price-cta" data-waitlist-trigger="true">Get early access →</a>
+      <a href="#waitlist" class="price-cta" data-waitlist-trigger="true">Get Dori →</a>
     </div>
   </div>
 </section>
@@ -1070,9 +1072,9 @@
     <h2 class="t-h1">Be the <span class="serif-pop">calmer</span> version of yourself.</h2>
     <p class="sub">Dori holds the context, tracks the threads, and makes sure nothing slips. Give it a week — the day will feel different.</p>
     <div class="ctaband-btns">
-      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get early access →</a>
-      <a href="#capture" class="btn btn-ghost btn-lg">See how it works</a>
+      <a href="#waitlist" class="btn btn-amber btn-lg" data-waitlist-trigger="true">Get Dori →</a>
     </div>
+    <p class="cta-soon">Coming soon</p>
   </div>
 </section>
 
@@ -1232,7 +1234,12 @@
     }, 2600);
 
     // Marquee loop
-    gsap.to('#marquee', { xPercent: -50, duration: 22, repeat: -1, ease: 'none' });
+    const mqTween = gsap.to('#marquee', { xPercent: -50, duration: 58, repeat: -1, ease: 'none' });
+    const mqBand = document.querySelector('.marquee-band');
+    if (mqBand) {
+      mqBand.addEventListener('pointerenter', () => mqTween.pause());
+      mqBand.addEventListener('pointerleave', () => mqTween.resume());
+    }
 
     // Copy blocks + cards: rise in
     document.querySelectorAll('[data-animate]').forEach(el => {
